@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/Project-Nilvier/static/css/main.5f361e03.chunk.css",
-    "main.js": "/Project-Nilvier/static/js/main.019de119.chunk.js",
-    "main.js.map": "/Project-Nilvier/static/js/main.019de119.chunk.js.map",
+    "main.js": "/Project-Nilvier/static/js/main.dd69c512.chunk.js",
+    "main.js.map": "/Project-Nilvier/static/js/main.dd69c512.chunk.js.map",
     "runtime-main.js": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js",
     "runtime-main.js.map": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js.map",
-    "static/js/2.ae9f4eb5.chunk.js": "/Project-Nilvier/static/js/2.ae9f4eb5.chunk.js",
-    "static/js/2.ae9f4eb5.chunk.js.map": "/Project-Nilvier/static/js/2.ae9f4eb5.chunk.js.map",
+    "static/js/2.e666806f.chunk.js": "/Project-Nilvier/static/js/2.e666806f.chunk.js",
+    "static/js/2.e666806f.chunk.js.map": "/Project-Nilvier/static/js/2.e666806f.chunk.js.map",
     "index.html": "/Project-Nilvier/index.html",
-    "precache-manifest.97c76c4bf7878e2207521ede300b301c.js": "/Project-Nilvier/precache-manifest.97c76c4bf7878e2207521ede300b301c.js",
+    "precache-manifest.c56bb2bb44867c25cd03f19d76abfa61.js": "/Project-Nilvier/precache-manifest.c56bb2bb44867c25cd03f19d76abfa61.js",
     "service-worker.js": "/Project-Nilvier/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/Project-Nilvier/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.ae9f4eb5.chunk.js.LICENSE.txt": "/Project-Nilvier/static/js/2.ae9f4eb5.chunk.js.LICENSE.txt",
+    "static/js/2.e666806f.chunk.js.LICENSE.txt": "/Project-Nilvier/static/js/2.e666806f.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/Project-Nilvier/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.b3dd0ff8.js",
-    "static/js/2.ae9f4eb5.chunk.js",
+    "static/js/2.e666806f.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.019de119.chunk.js"
+    "static/js/main.dd69c512.chunk.js"
   ]
 }
