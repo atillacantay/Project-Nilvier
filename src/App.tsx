@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import MainPage from './containers/MainPage'
+import About from './containers/About'
+import GiphyContainer from './containers/GiphyContainer'
 
-function App() {
+import Indicator from './components/Indicator'
+import Layout from './layouts/Layout'
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Indicator>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/giphy" component={GiphyContainer} />
+          </Switch>
+        </Layout>
+      </Router>
+    </Indicator>
+  )
 }
 
-export default App;
+export default App
