@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import MainPage from './containers/MainPage'
 import About from './containers/About'
 import GiphyContainer from './containers/GiphyContainer'
