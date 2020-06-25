@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Project-Nilvier/static/css/main.5f361e03.chunk.css",
+    "main.js": "/Project-Nilvier/static/js/main.6a7ffc66.chunk.js",
+    "main.js.map": "/Project-Nilvier/static/js/main.6a7ffc66.chunk.js.map",
+    "runtime-main.js": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js",
+    "runtime-main.js.map": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js.map",
+    "static/js/2.425c8921.chunk.js": "/Project-Nilvier/static/js/2.425c8921.chunk.js",
+    "static/js/2.425c8921.chunk.js.map": "/Project-Nilvier/static/js/2.425c8921.chunk.js.map",
+    "index.html": "/Project-Nilvier/index.html",
+    "precache-manifest.fa401ed6f917e3b3ababfe68836a1659.js": "/Project-Nilvier/precache-manifest.fa401ed6f917e3b3ababfe68836a1659.js",
+    "service-worker.js": "/Project-Nilvier/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/Project-Nilvier/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.425c8921.chunk.js.LICENSE.txt": "/Project-Nilvier/static/js/2.425c8921.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Project-Nilvier/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3dd0ff8.js",
+    "static/js/2.425c8921.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.6a7ffc66.chunk.js"
+  ]
+}
