@@ -6,7 +6,7 @@ export function themeCreator(theme: string): Theme {
   return themeMap[theme]
 }
 
-const themeMap: { [key: string]: Theme } = {
+export const themeMap: { [key: string]: Theme } = {
   lightTheme,
   darkTheme,
 }

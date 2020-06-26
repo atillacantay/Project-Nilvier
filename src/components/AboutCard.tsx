@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import {
@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      marginTop: theme.spacing(2),
       maxWidth: 345,
     },
     media: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-export default function AboutCard() {
+const AboutCard: FC = () => {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState(false)
 
@@ -46,15 +47,18 @@ export default function AboutCard() {
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={4}>
       <CardHeader title="Atilla Cantay Gül" subheader="May 25, 1998" />
       <CardActionArea>
-        <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="me" />
+        <CardMedia
+          className={classes.media}
+          image="https://res.cloudinary.com/dfgpewwii/image/upload/v1593178251/Project%20Nilvier/me.jpg"
+          title="me"
+        />
       </CardActionArea>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of
-          frozen peas along with the mussels, if you like.
+          Hey! I am a new graduated and working on Frontend and Backend Development.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -83,3 +87,4 @@ export default function AboutCard() {
     </Card>
   )
 }
+export default AboutCard

@@ -25,8 +25,8 @@ const Navbar: FC = () => {
   const themeContext = useContext(ThemeContext)
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div>
+      <AppBar position="static" color="default">
         <Toolbar>
           <Box flexGrow={1}>
             <Button component={RouterLink} to="/" variant="text" size="large" color="inherit" className={classes.title}>

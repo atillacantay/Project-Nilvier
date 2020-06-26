@@ -10,12 +10,12 @@ const useStyles = makeStyles(() =>
       height: '100%',
       overflow: 'hidden',
     },
-    contentContainer: {
+    wrapper: {
       display: 'flex',
       flex: '1 1 auto',
       overflow: 'hidden',
     },
-    wrapper: {
+    contentContainer: {
       display: 'flex',
       flex: '1 1 auto',
       overflow: 'hidden',

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import React, { useState, useEffect, FC } from 'react'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { LinearProgress } from '@material-ui/core'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     indicator: {
       height: 5,
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Indicator = (props: any) => {
+const Indicator: FC = ({ children }) => {
   const classes = useStyles()
   const [isLoading, setLoading] = useState(true)
 
@@ -20,7 +20,7 @@ const Indicator = (props: any) => {
 
   if (isLoading) return <LinearProgress className={classes.indicator} />
 
-  return props.children
+  return <>{children}</>
 }
 
 export default Indicator

@@ -1,6 +1,7 @@
 import React, { useState, createContext, FC } from 'react'
-import { MuiThemeProvider } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 import { themeCreator } from '../themes/base'
+import { themeMap } from '../themes/base'
 
 type ThemeContextType = {
   themeName: string
@@ -18,19 +19,29 @@ const ThemeProvider: FC = props => {
 
   // Wrap _setThemeName to store new theme names in localStorage
   const _setThemeName = (): void => {
-    if (currentTheme === 'lightTheme') {
+    if (themeName === 'lightTheme') {
       window.localStorage.setItem('theme', 'darkTheme')
       setThemeName('darkTheme')
-    } else if (currentTheme === 'darkTheme') {
+    } else if (themeName === 'darkTheme') {
       window.localStorage.setItem('theme', 'lightTheme')
       setThemeName('lightTheme')
     }
   }
 
   // Retrieve the theme object by theme name
-  const theme = themeCreator(themeName)
+  //const theme = themeCreator(themeName)
 
-  console.log(theme)
+  console.log(themeMap[themeName])
+
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: themeName === 'darkTheme' ? 'dark' : 'light',
+        },
+      }),
+    [themeName],
+  )
 
   return (
     <ThemeContext.Provider
