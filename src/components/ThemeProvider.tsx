@@ -1,7 +1,5 @@
 import React, { useState, createContext, FC } from 'react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
-import { themeCreator } from '../themes/base'
-import { themeMap } from '../themes/base'
 
 type ThemeContextType = {
   themeName: string
@@ -27,11 +25,6 @@ const ThemeProvider: FC = props => {
       setThemeName('lightTheme')
     }
   }
-
-  // Retrieve the theme object by theme name
-  //const theme = themeCreator(themeName)
-
-  console.log(themeMap[themeName])
 
   const theme = React.useMemo(
     () =>

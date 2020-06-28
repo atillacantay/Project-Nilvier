@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 import {
   Timeline,
   TimelineItem,

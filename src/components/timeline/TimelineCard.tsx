@@ -6,13 +6,11 @@ import {
   CardHeader,
   CardContent,
   CardActions,
-  CardActionArea,
   Collapse,
   IconButton,
   Typography,
   Link,
   Chip,
-  Paper,
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ITimelineItem } from '../../types'

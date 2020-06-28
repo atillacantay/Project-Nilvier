@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import GiphyCard from '../components/GiphyCard'
 import { Gif } from '../store/giphy/types'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Box, Grid, TextField, Divider, CircularProgress } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +38,10 @@ const Giphy: FC<Props> = ({ gifs, isFetching, error, giphyCall }) => {
   const classes = useStyles()
   const { register, handleSubmit, errors } = useForm<FormData>()
 
+  useEffect(() => {
+    giphyCall('test')
+  }, [giphyCall])
+
   const onSubmit = handleSubmit(({ term }) => {
     giphyCall(term)
   })
@@ -66,16 +71,16 @@ const Giphy: FC<Props> = ({ gifs, isFetching, error, giphyCall }) => {
           <Grid item xs={12}>
             <Box m={2}>
               {isFetching && <CircularProgress color="primary" />}
-              {!error && gifs.length > 0 && (
+              {gifs.length > 0 ? (
                 <Grid container spacing={4}>
-                  {gifs.length > 0
-                    ? gifs.map((gif: Gif) => (
-                        <Grid key={gif.id} item xs={12} sm={6} md={4} lg={3}>
-                          <GiphyCard gif={gif} />
-                        </Grid>
-                      ))
-                    : 'null'}
+                  {gifs.map((gif: Gif) => (
+                    <Grid key={gif.id} item xs={12} sm={6} md={4} lg={3}>
+                      <GiphyCard gif={gif} />
+                    </Grid>
+                  ))}
                 </Grid>
+              ) : (
+                error && <Alert severity="error">{error}</Alert>
               )}
             </Box>
           </Grid>
