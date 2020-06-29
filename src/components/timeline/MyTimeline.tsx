@@ -80,7 +80,7 @@ const items: ITimelineItem[] = [
     ],
     content:
       'A website platform that aims to facilitate the access of lawyers to people who have a legal problem or who want to get counseling or cooperation on this legal problem. It includes the functionality of becoming a member, logging in, searching for a lawyer, creating an ad, viewing an ad, sharing an ad, friendship feature, realtime messaging and notification system and many more',
-    website: 'https://www.online-lawyer.herokuapp.com/',
+    website: 'https://online-lawyer.herokuapp.com/',
   },
   {
     id: 3,
@@ -108,7 +108,7 @@ const items: ITimelineItem[] = [
     ],
     content:
       'Contribution to the developed projects, Responsibilities and duties given were fulfilled, Example Project: Real-time note taking service development with React & Redux & Nodejs & MongoDB & WebSocket support',
-    website: 'https://www.atillacantay.herokuapp.com/',
+    website: 'https://atillacantay.herokuapp.com/',
   },
   {
     id: 5,
