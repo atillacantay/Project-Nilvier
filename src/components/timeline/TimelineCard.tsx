@@ -17,9 +17,7 @@ import { ITimelineItem } from '../../types'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: 345,
-    },
+    root: {},
     title: {
       fontSize: 24,
     },
