@@ -1,4 +1,6 @@
 import React, { FC } from 'react'
+
+import { makeStyles, createStyles } from '@material-ui/core'
 import {
   Timeline,
   TimelineItem,
@@ -8,17 +10,26 @@ import {
   TimelineDot,
 } from '@material-ui/lab'
 import { Code, BookOutlined, WorkOutline } from '@material-ui/icons'
-import TimelineCard from './timeline/TimelineCard'
-import { ITimelineItem } from '../types'
+import TimelineCard from './TimelineCard'
+import { ITimelineItem } from '../../types'
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    timelineContent: {
+      textAlign: 'left',
+    },
+  }),
+)
 
 const MyTimeline: FC = () => {
+  const classes = useStyles()
   return (
     <Timeline align="alternate">
-      {items &&
+      {items.length > 0 &&
         items.map(item => {
           const { id, icon: Icon } = item
           return (
-            <TimelineItem key={id}>
+            <TimelineItem key={id} classes={{ alignAlternate: classes.timelineContent }}>
               <TimelineSeparator>
                 <TimelineDot color="inherit">
                   <Icon />

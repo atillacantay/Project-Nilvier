@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import GiphyCard from '../components/GiphyCard'
+import GiphyCard from '../components/giphy/GiphyCard'
 import { Gif } from '../store/giphy/types'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Box, Grid, TextField, Divider, CircularProgress } from '@material-ui/core'
+import { Box, Grid, TextField, Divider, CircularProgress, InputAdornment } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -58,6 +58,13 @@ const Giphy: FC<Props> = ({ gifs, isFetching, error, giphyCall }) => {
                 placeholder="Search"
                 fullWidth
                 className={classes.textField}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {isFetching && <CircularProgress color="inherit" size={32} />}
+                    </InputAdornment>
+                  ),
+                }}
                 defaultValue=""
                 inputRef={register({ required: { value: true, message: 'Enter a search term' } })}
                 error={!!errors.term}
@@ -70,8 +77,7 @@ const Giphy: FC<Props> = ({ gifs, isFetching, error, giphyCall }) => {
           </Grid>
           <Grid item xs={12}>
             <Box m={2}>
-              {isFetching && <CircularProgress color="primary" />}
-              {gifs.length > 0 ? (
+              {!error && gifs.length > 0 ? (
                 <Grid container spacing={4}>
                   {gifs.map((gif: Gif) => (
                     <Grid key={gif.id} item xs={12} sm={6} md={4} lg={3}>

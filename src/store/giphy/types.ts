@@ -9,6 +9,10 @@ export interface Gif {
   id: string
   title: string
   import_datetime: string
+  user?: {
+    is_verified: boolean
+    profile_url: string
+  }
   username: string
   images: {
     original: {
