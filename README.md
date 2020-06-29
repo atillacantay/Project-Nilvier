@@ -30,8 +30,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/atillacantay">
-    <img src="https://ibb.co/kXNBwP2" alt="Logo" width="80" height="80">
+  <a href="https://github.com/atillacantay">   
+    <img src="https://i.ibb.co/KWThf8x/LogoDark.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">PROJECT NILVIER</h3>
@@ -55,31 +55,18 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
-* [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
-
-
-### Built With
+## Built With
 
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
@@ -113,7 +100,6 @@ npm install
 ```
 
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -126,7 +112,6 @@ The About page contains contents about my education background and experiences. 
 ## Roadmap
 
 See the [open issues](https://github.com/atillacantay/Project-Nilvier/issues) for a list of proposed features (and known issues).
-
 
 
 
