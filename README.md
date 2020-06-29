@@ -1,44 +1,134 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!--
+*** Thanks for checking out this README Template. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+***
+***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** github_username, repo, twitter_handle, email
+-->
 
-## Available Scripts
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-In the project directory, you can run:
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-### `npm start`
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/atillacantay">   
+    <img src="https://i.ibb.co/N14ZfFF/instalogo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <h3 align="center">PROJECT NILVIER</h3>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <p align="center">
+    This project was developed by me only for the purpose of improving myself
+    <br />
+    <a href="https://github.com/atillacantay/Project-Nilvier"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://atillacantay.github.io/Project-Nilvier">View Demo</a>
+    ·
+    <a href="https://github.com/atillacantay/Project-Nilvier/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/atillacantay/Project-Nilvier/issues">Request Feature</a>
+  </p>
+</p>
 
-### `npm test`
+<!-- TABLE OF CONTENTS -->
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Table of Contents
 
-### `npm run build`
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Contact](#contact)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Material-UI](https://material-ui.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To get a local copy up and running follow these simple steps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- npm
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+npm install npm@latest -g
+```
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+git clone https://github.com/atillacantay/Project-Nilvier.git
+```
+
+2. Install NPM packages
+
+```sh
+npm install
+```
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+The About page contains contents about my education background and experiences. If you want, you can be directed by pressing the about button in the main menu. It is also available in Giphy, a page that interacts with a public api to better understand the basics of typescript.
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+See the [open issues](https://github.com/atillacantay/Project-Nilvier/issues) for a list of proposed features (and known issues).
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Project Link: [https://github.com/atillacantay/Project-Nilvier](https://github.com/atillacantay/Project-Nilvier)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/atillacantay/
+[product-screenshot]: images/screenshot.png
