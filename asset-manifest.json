@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Project-Nilvier/static/css/main.aeb1d389.chunk.css",
-    "main.js": "/Project-Nilvier/static/js/main.53318e24.chunk.js",
-    "main.js.map": "/Project-Nilvier/static/js/main.53318e24.chunk.js.map",
+    "main.js": "/Project-Nilvier/static/js/main.91d307bc.chunk.js",
+    "main.js.map": "/Project-Nilvier/static/js/main.91d307bc.chunk.js.map",
     "runtime-main.js": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js",
     "runtime-main.js.map": "/Project-Nilvier/static/js/runtime-main.b3dd0ff8.js.map",
     "static/js/2.9299f311.chunk.js": "/Project-Nilvier/static/js/2.9299f311.chunk.js",
     "static/js/2.9299f311.chunk.js.map": "/Project-Nilvier/static/js/2.9299f311.chunk.js.map",
     "index.html": "/Project-Nilvier/index.html",
-    "precache-manifest.04c8f4ac08353574c56914cd647bb169.js": "/Project-Nilvier/precache-manifest.04c8f4ac08353574c56914cd647bb169.js",
+    "precache-manifest.807f24ec23e52ad542dc4f94ef9e4b72.js": "/Project-Nilvier/precache-manifest.807f24ec23e52ad542dc4f94ef9e4b72.js",
     "service-worker.js": "/Project-Nilvier/service-worker.js",
     "static/css/main.aeb1d389.chunk.css.map": "/Project-Nilvier/static/css/main.aeb1d389.chunk.css.map",
     "static/js/2.9299f311.chunk.js.LICENSE.txt": "/Project-Nilvier/static/js/2.9299f311.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.b3dd0ff8.js",
     "static/js/2.9299f311.chunk.js",
     "static/css/main.aeb1d389.chunk.css",
-    "static/js/main.53318e24.chunk.js"
+    "static/js/main.91d307bc.chunk.js"
   ]
 }
