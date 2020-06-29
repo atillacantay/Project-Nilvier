@@ -31,7 +31,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/atillacantay">   
-    <img src="https://i.ibb.co/KWThf8x/LogoDark.png" alt="Logo" width="80" height="80">
+    <img src="https://i.ibb.co/N14ZfFF/instalogo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">PROJECT NILVIER</h3>
@@ -42,7 +42,7 @@
     <a href="https://github.com/atillacantay/Project-Nilvier"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://atillacantay.github.io/Project-Nilvier/#/">View Demo</a>
+    <a href="https://atillacantay.github.io/Project-Nilvier">View Demo</a>
     ·
     <a href="https://github.com/atillacantay/Project-Nilvier/issues">Report Bug</a>
     ·
@@ -82,7 +82,6 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
 ```sh
 npm install npm@latest -g
