@@ -5,7 +5,7 @@ import AboutCard from '../components/about/AboutCard'
 import MyTimeline from '../components/timeline/MyTimeline'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Button, Grid, Divider } from '@material-ui/core'
+import { Button, Grid, Divider, Typography } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import TranscriptTable from '../components/about/Transcript'
 
@@ -34,20 +34,31 @@ const About: FC = () => {
     <div className={classes.aboutRoot}>
       <div className={classes.aboutContainer}>
         <div className={classes.aboutContent}>
-          <Button component={RouterLink} to="/" variant="outlined" startIcon={<ArrowBackIcon />}>
-            Back
-          </Button>
           <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <Button component={RouterLink} to="/" variant="outlined" startIcon={<ArrowBackIcon />}>
+                Back
+              </Button>
+            </Grid>
             <Grid item xs={12} sm={4}>
+              <Typography variant="h6" align="center">
+                About me
+              </Typography>
               <AboutCard />
             </Grid>
             <Grid item xs={12} sm={8}>
+              <Typography variant="h6" align="center">
+                Transcript
+              </Typography>
               <TranscriptTable />
             </Grid>
             <Grid item xs={12}>
               <Divider />
             </Grid>
             <Grid item xs={12}>
+              <Typography variant="h6" align="center">
+                Experiences
+              </Typography>
               <MyTimeline />
             </Grid>
           </Grid>

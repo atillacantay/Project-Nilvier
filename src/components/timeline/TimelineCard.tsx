@@ -56,7 +56,9 @@ const TimelineCard: FC<TimelineCardProps> = item => {
       <CardHeader title={item.title} subheader={item.date} titleTypographyProps={{ variant: 'body1' }} />
       <CardContent>
         {item.chips &&
-          item.chips.map(chip => <Chip key={chip.key} label={chip.label} className={classes.chip} size="small" />)}
+          item.chips.map(chip => (
+            <Chip key={chip.key} label={chip.label} className={classes.chip} size="small" clickable />
+          ))}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton

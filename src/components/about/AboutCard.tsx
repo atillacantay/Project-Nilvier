@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+
 import {
   Card,
   CardMedia,
@@ -12,29 +12,21 @@ import {
   Typography,
   Chip,
   Box,
+  Button,
 } from '@material-ui/core'
 import ShareIcon from '@material-ui/icons/Share'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       marginTop: theme.spacing(2),
-      maxWidth: 360,
     },
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
-    expand: {
-      transform: 'rotate(0deg)',
+    expandButton: {
       marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
     },
     chip: {
       margin: theme.spacing(0.5),
@@ -70,26 +62,23 @@ const AboutCard: FC = () => {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
+        <Button
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          variant="outlined"
+          className={classes.expandButton}
         >
-          <ExpandMoreIcon />
-        </IconButton>
+          {expanded ? 'Close skills tab' : ' Open skills tab'}
+        </Button>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Box>
-            <Typography paragraph>Technologies:</Typography>
-            <Typography paragraph>
-              {chips.map(chip => (
-                <Chip key={chip.key} label={chip.label} className={classes.chip} size="small" />
-              ))}
-            </Typography>
+            <Typography>Technologies:</Typography>
+            {chips.map(chip => (
+              <Chip key={chip.key} label={chip.label} className={classes.chip} size="small" />
+            ))}
           </Box>
         </CardContent>
       </Collapse>

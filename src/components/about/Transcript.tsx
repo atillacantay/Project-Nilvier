@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tableRoot: {
       marginTop: theme.spacing(2),
-      maxHeight: 430,
+      maxHeight: 440,
     },
     table: {
       minWidth: 650,
@@ -113,37 +113,37 @@ const courses = [
   { key: 28, code: 'IENG 407', name: 'INVESTMENT ANALYSIS', grade: 'A2', date: '2017 (Spring)' },
 
   //y3s1
-  { key: 28, code: 'CENG 301', name: 'DATABASE MANAGEMENT & MODELING', grade: 'A1', date: '2018 (Fall)' },
-  { key: 29, code: 'CENG 303', name: 'COMPUTER ARCHITECTURE', grade: 'A2', date: '2018 (Fall)' },
-  { key: 30, code: 'CENG 305', name: 'OPERATING SYSTEMS', grade: 'A1', date: '2018 (Fall)' },
-  { key: 31, code: 'CENG 307', name: 'WEB-BASED TECHNOLOGIES', grade: 'A1', date: '2018 (Fall)' },
-  { key: 32, code: 'CENG 309', name: 'SIGNAL PROCESSING', grade: 'A1', date: '2018 (Fall)' },
-  { key: 33, code: 'YDO 204', name: 'TECHNICAL FOREIGN LANGUAGE - I', grade: 'A1', date: '2018 (Fall)' },
+  { key: 29, code: 'CENG 301', name: 'DATABASE MANAGEMENT & MODELING', grade: 'A1', date: '2018 (Fall)' },
+  { key: 30, code: 'CENG 303', name: 'COMPUTER ARCHITECTURE', grade: 'A2', date: '2018 (Fall)' },
+  { key: 31, code: 'CENG 305', name: 'OPERATING SYSTEMS', grade: 'A1', date: '2018 (Fall)' },
+  { key: 32, code: 'CENG 307', name: 'WEB-BASED TECHNOLOGIES', grade: 'A1', date: '2018 (Fall)' },
+  { key: 33, code: 'CENG 309', name: 'SIGNAL PROCESSING', grade: 'A1', date: '2018 (Fall)' },
+  { key: 34, code: 'YDO 204', name: 'TECHNICAL FOREIGN LANGUAGE - I', grade: 'A1', date: '2018 (Fall)' },
 
   //y3s2
-  { key: 34, code: 'CENG 300', name: 'INTERNSHIP TRAINING - II', grade: 'A1', date: '2018 (Spring)' },
-  { key: 35, code: 'CENG 302', name: 'SOFTWARE ENGINEERING', grade: 'A2', date: '2018 (Spring)' },
-  { key: 36, code: 'CENG 304', name: 'MICROPROCESSORS & MICROCOMPUTERS', grade: 'A1', date: '2018 (Spring)' },
-  { key: 37, code: 'CENG 306', name: 'FORMAL LANGUAGES & AUTOMATA THEORY', grade: 'A1', date: '2018 (Spring)' },
-  { key: 38, code: 'IENG 322', name: 'OPERATIONS RESEARCH', grade: 'A1', date: '2018 (Spring)' },
-  { key: 39, code: 'IENG 474', name: 'LOGISTICS INFORMATION SYSTEMS', grade: 'A1', date: '2018 (Spring)' },
-  { key: 40, code: 'YDO 303', name: 'TECHNICAL FOREIGN LANGUAGE - II', grade: 'A1', date: '2018 (Spring)' },
+  { key: 35, code: 'CENG 300', name: 'INTERNSHIP TRAINING - II', grade: 'A1', date: '2018 (Spring)' },
+  { key: 36, code: 'CENG 302', name: 'SOFTWARE ENGINEERING', grade: 'A2', date: '2018 (Spring)' },
+  { key: 37, code: 'CENG 304', name: 'MICROPROCESSORS & MICROCOMPUTERS', grade: 'A1', date: '2018 (Spring)' },
+  { key: 38, code: 'CENG 306', name: 'FORMAL LANGUAGES & AUTOMATA THEORY', grade: 'A1', date: '2018 (Spring)' },
+  { key: 39, code: 'IENG 322', name: 'OPERATIONS RESEARCH', grade: 'A1', date: '2018 (Spring)' },
+  { key: 40, code: 'IENG 474', name: 'LOGISTICS INFORMATION SYSTEMS', grade: 'A1', date: '2018 (Spring)' },
+  { key: 41, code: 'YDO 303', name: 'TECHNICAL FOREIGN LANGUAGE - II', grade: 'A1', date: '2018 (Spring)' },
 
   //y4s1
-  { key: 41, code: 'CENG 403', name: 'DATA COMMUNICATION & COMPUTER NETWORKS', grade: 'A2', date: '2019 (Fall)' },
-  { key: 42, code: 'IENG 487', name: 'OCCUPATIONAL HEALTH AND SAFETY - I', grade: 'A2', date: '2019 (Fall)' },
-  { key: 43, code: 'CENG 405', name: 'CURRENT TOPICS IN COMPUTER SCIENCE - I', grade: 'A2', date: '2019 (Fall)' },
-  { key: 44, code: 'IENG 418', name: 'SERVICE SYSTEMS', grade: 'A2', date: '2019 (Fall)' },
-  { key: 45, code: 'PDR 428', name: 'PERSONAL DEVELOPMENT', grade: 'A2', date: '2019 (Fall)' },
-  { key: 46, code: 'CENG 401', name: 'BACHELOR OF SCIENCE THESIS – I', grade: 'A1', date: '2019 (Fall)' },
+  { key: 42, code: 'CENG 403', name: 'DATA COMMUNICATION & COMPUTER NETWORKS', grade: 'A2', date: '2019 (Fall)' },
+  { key: 43, code: 'IENG 487', name: 'OCCUPATIONAL HEALTH AND SAFETY - I', grade: 'A2', date: '2019 (Fall)' },
+  { key: 44, code: 'CENG 405', name: 'CURRENT TOPICS IN COMPUTER SCIENCE - I', grade: 'A2', date: '2019 (Fall)' },
+  { key: 45, code: 'IENG 418', name: 'SERVICE SYSTEMS', grade: 'A2', date: '2019 (Fall)' },
+  { key: 46, code: 'PDR 428', name: 'PERSONAL DEVELOPMENT', grade: 'A2', date: '2019 (Fall)' },
+  { key: 47, code: 'CENG 401', name: 'BACHELOR OF SCIENCE THESIS – I', grade: 'A1', date: '2019 (Fall)' },
 
   //y4s2
-  { key: 47, code: 'CENG 404', name: 'PROFESSION SEMINAR', grade: 'A1', date: '2019 (Spring)' },
-  { key: 48, code: 'IENG 488', name: 'OCCUPATIONAL HEALTH AND SAFETY - II', grade: 'A1', date: '2019 (Spring)' },
-  { key: 49, code: 'IENG 456', name: 'ANALYTICAL APPROACH TO DECISION MAKING', grade: 'A2', date: '2019 (Spring)' },
-  { key: 50, code: 'YDO 302', name: 'FOREIGN LANGUAGE FOR BUSINESS', grade: 'A2', date: '2019 (Spring)' },
-  { key: 51, code: 'CENG 402', name: 'BACHELOR OF SCIENCE THESIS – II', grade: 'A1', date: '2019 (Spring)' },
-  { key: 52, code: 'CENG 418', name: 'COMPUTER GRAPHICS', grade: 'A1', date: '2019 (Spring)' },
-  { key: 53, code: 'CENG 470', name: 'SOFTWARE QUALITY ASSURANCE', grade: 'A1', date: '2019 (Spring)' },
-  { key: 54, code: 'CENG 468', name: 'DATA MINING', grade: 'A1', date: '2019 (Spring)' },
+  { key: 48, code: 'CENG 404', name: 'PROFESSION SEMINAR', grade: 'A1', date: '2019 (Spring)' },
+  { key: 49, code: 'IENG 488', name: 'OCCUPATIONAL HEALTH AND SAFETY - II', grade: 'A1', date: '2019 (Spring)' },
+  { key: 50, code: 'IENG 456', name: 'ANALYTICAL APPROACH TO DECISION MAKING', grade: 'A2', date: '2019 (Spring)' },
+  { key: 51, code: 'YDO 302', name: 'FOREIGN LANGUAGE FOR BUSINESS', grade: 'A2', date: '2019 (Spring)' },
+  { key: 52, code: 'CENG 402', name: 'BACHELOR OF SCIENCE THESIS – II', grade: 'A1', date: '2019 (Spring)' },
+  { key: 53, code: 'CENG 418', name: 'COMPUTER GRAPHICS', grade: 'A1', date: '2019 (Spring)' },
+  { key: 54, code: 'CENG 470', name: 'SOFTWARE QUALITY ASSURANCE', grade: 'A1', date: '2019 (Spring)' },
+  { key: 55, code: 'CENG 468', name: 'DATA MINING', grade: 'A1', date: '2019 (Spring)' },
 ]

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { makeStyles, createStyles } from '@material-ui/core'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -39,6 +40,7 @@ const Layout: FC = ({ children }) => {
           <div className={classes.content}>{children}</div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
