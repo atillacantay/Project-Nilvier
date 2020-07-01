@@ -18,13 +18,16 @@ export interface Content {
   products: Product[]
 }
 
+//Category Item Object
+export interface CategoryItem {
+  category_name: string
+  date: string
+  contents: Content[]
+}
+
 //Category Object
 export interface Category {
-  [category_id: number]: {
-    category_name: string
-    date: string
-    contents: Content[]
-  }
+  [category_id: string]: CategoryItem
 }
 
 //Fooditive state

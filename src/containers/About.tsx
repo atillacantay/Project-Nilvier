@@ -40,13 +40,13 @@ const About: FC = () => {
                 Back
               </Button>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} md={4}>
               <Typography variant="h6" align="center">
                 About me
               </Typography>
               <AboutCard />
             </Grid>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={12} md={8}>
               <Typography variant="h6" align="center">
                 Transcript
               </Typography>

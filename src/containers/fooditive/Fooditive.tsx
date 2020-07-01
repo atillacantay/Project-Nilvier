@@ -1,7 +1,9 @@
 import React, { FC, useEffect } from 'react'
 
+import FooditiveTable from '../../components/fooditive/FooditiveTable'
+
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Table, CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 import { Category } from '../../store/fooditive/types'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -10,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
+      margin: theme.spacing(3),
     },
   }),
 )
@@ -38,7 +41,7 @@ const Fooditive: FC<Props> = ({ categories, isFetching, error, fetchProducts }) 
   return (
     <div className={classes.fooditiveRoot}>
       {isFetching && <CircularProgress />}
-      {!error && categories && 'Fetched all data. Check the console'}
+      {!error && categories && <FooditiveTable categories={categories} />}
     </div>
   )
 }

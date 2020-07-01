@@ -1,26 +1,14 @@
 import React, { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Theme,
-  createStyles,
-} from '@material-ui/core/'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core/'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tableRoot: {
       marginTop: theme.spacing(2),
-      maxHeight: 440,
+      maxHeight: 520,
     },
-    table: {
-      minWidth: 650,
-    },
+    table: {},
   }),
 )
 
