@@ -25,7 +25,7 @@ const Navbar: FC = () => {
   const themeContext = useContext(ThemeContext)
 
   return (
-    <div>
+    <>
       <AppBar position="static" color="default">
         <Toolbar>
           <Box flexGrow={1}>
@@ -38,7 +38,7 @@ const Navbar: FC = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   )
 }
 export default Navbar

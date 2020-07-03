@@ -9,7 +9,7 @@ import { Category } from '../../store/fooditive/types'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     fooditiveRoot: {
-      height: '100%',
+      // height: '100%',
       display: 'flex',
       flexDirection: 'column',
       margin: theme.spacing(3),
@@ -34,7 +34,7 @@ const Fooditive: FC<Props> = ({ categories, isFetching, error, fetchProducts }) 
 
   useEffect(() => {
     fetchProducts()
-  }, [])
+  }, [fetchProducts])
 
   console.log(categories)
 

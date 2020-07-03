@@ -84,12 +84,6 @@ const items: Category = {
           },
         ],
       },
-    ],
-  },
-  [1]: {
-    category_name: 'alkollü içkiler - 2',
-    date: '12/06/2020',
-    contents: [
       {
         company: 'Kırbıyık İçecek Dağ. Paz.Tur. Otel. İnş.Tic. San. A.Ş. Serik/ANTALYA',
         products: [
@@ -206,6 +200,79 @@ const items: Category = {
             product_name: 'Aromatize Şarap Bazlı İçki',
             unsuitability: 'Dışardan Etil Alkol İlavesi',
             serial_number: '07.12.2018',
+          },
+          {
+            brand: 'Coctail Sek On The Beach',
+            product_name: 'Aromatize Şarap Bazlı İçki',
+            unsuitability: 'Dışardan Etil Alkol İlavesi',
+            serial_number: '30.11.2018',
+          },
+          {
+            brand: 'Coctail Mojito',
+            product_name: 'Aromatize Şarap Bazlı İçki',
+            unsuitability: 'Dışardan Etil Alkol İlavesi',
+            serial_number: '16.05.2019',
+          },
+          {
+            brand: 'Coctail Pinacolada',
+            product_name: 'Aromatize Şarap Bazlı İçki',
+            unsuitability: 'Dışardan Etil Alkol İlavesi',
+            serial_number: '06.09.2019',
+          },
+          {
+            brand: '14.4 Shot',
+            product_name: 'Aromatize Şarap Bazlı İçki',
+            unsuitability: 'Ürün içeriğinde üzüm alkolü olmaması',
+            serial_number: '16.10.2017',
+          },
+          {
+            brand: 'Volim',
+            product_name: 'Aromatize Şarap Bazlı İçki',
+            unsuitability: 'Dışardan Etil Alkol İlavesi',
+            serial_number: '30.08.2019',
+          },
+        ],
+      },
+    ],
+  },
+  [1]: {
+    category_name: 'alkolsüz içecekler',
+    date: '12/06/2020',
+    contents: [
+      {
+        company:
+          'Ali Yelyetmez Global Enerji İçecekleri-Ali YELYETMEZ: Yakuplu Mah. 35. Sok. No:16/11 Merkez Beylikdüzü - İstanbul',
+        products: [
+          {
+            brand: 'New Nitro',
+            product_name: 'New Nitro Full+Power Ginseng Drink (Nitro Tuttı Fruttı Aromalı Ginsengli Gazlı İçecek)',
+            unsuitability: 'İlaç etken maddesi (Sildenafil)',
+            serial_number: '19196',
+          },
+          {
+            brand: 'Nitro Max Gold',
+            product_name: 'Nitro Max Gold Tutti Frutti Aromalı Ginsengli Gazlı İçecek 150 ml',
+            unsuitability: 'İlaç etken maddesi (Sildenafil)',
+            serial_number: '27.07.2018',
+          },
+          {
+            brand: 'Nitro Max Gold',
+            product_name:
+              'Nitro Max Gold Ginseng Drink (Nitro Max Gold Tutti Frutti Aromalı Ginsengli Gazlı İçecek 200 ml)',
+            unsuitability: 'İlaç etken maddesi (Sildenafil)',
+            serial_number: '27.07.2018',
+          },
+        ],
+      },
+      {
+        company:
+          'NY Verde Gıda Ticaret Limited Şirketi: Barbaros Mah. Barbaros Cad. No:120/A Merkez Ataşehir - İstanbul',
+        products: [
+          {
+            brand: 'Energy Plus Maxi Aphrodisiac Power',
+            product_name: 'Energy Plus Maxi Aphrodisiac Power Ginsengli Karışık Meyve Aromalı İçecek 125 ml',
+            unsuitability: 'İlaç etken maddesi (Sildenafil)',
+            serial_number: '0003',
           },
         ],
       },

@@ -9,7 +9,6 @@ import GiphyCardOperations from './GiphyCardOperations'
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      maxWidth: '345px',
       height: '300px',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',

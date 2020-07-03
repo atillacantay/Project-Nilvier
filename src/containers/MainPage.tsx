@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import logo from '../logo.svg'
 import '../App.css'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Button, Typography, Box } from '@material-ui/core'
+import { Button, Typography, Box, Grid } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,15 +36,18 @@ const MainPage: FC = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <Box mb={2} textAlign="center">
           <Typography variant="h6">Welcome to my portfolio</Typography>
-          <Typography variant="caption">This website is powered by React / Redux / TypeScript</Typography>
+          <Typography variant="caption">This website is built with React / Redux / TypeScript</Typography>
         </Box>
         <Box display="flex" m={1}>
-          <Button component={RouterLink} to="/about" color="default" variant="outlined" className={classes.button}>
-            show about
-          </Button>
-          <Button component={RouterLink} to="/giphy" color="default" variant="outlined">
-            giphy
-          </Button>
+          <Grid container spacing={2} alignItems="center">
+            {buttons.map(button => (
+              <Grid item key={button.key}>
+                <Button component={RouterLink} to={button.route} color="default" variant="outlined">
+                  {button.child}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
       </div>
     </div>
@@ -52,3 +55,9 @@ const MainPage: FC = () => {
 }
 
 export default MainPage
+
+const buttons = [
+  { key: 0, route: '/about', child: 'about' },
+  { key: 1, route: '/giphy', child: 'giphy' },
+  { key: 2, route: '/fooditive', child: 'Fooditive' },
+]
