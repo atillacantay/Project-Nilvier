@@ -5,6 +5,7 @@ import FooditiveTable from '../../components/fooditive/FooditiveTable'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { CircularProgress } from '@material-ui/core'
 import { Category } from '../../store/fooditive/types'
+import Axios from 'axios'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,6 +35,13 @@ const Fooditive: FC<Props> = ({ categories, isFetching, error, fetchProducts }) 
 
   useEffect(() => {
     fetchProducts()
+    Axios.get('http://localhost:5000/fooditive')
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }, [fetchProducts])
 
   return (
