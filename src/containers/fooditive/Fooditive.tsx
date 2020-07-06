@@ -36,8 +36,6 @@ const Fooditive: FC<Props> = ({ categories, isFetching, error, fetchProducts }) 
     fetchProducts()
   }, [fetchProducts])
 
-  console.log(categories)
-
   return (
     <div className={classes.fooditiveRoot}>
       {isFetching && <CircularProgress />}
