@@ -1,5 +1,7 @@
 // src/store/giphy/types.ts
 
+import HttpStatusCode from "../../types/HttpStatusCode"
+
 export const FETCH_GIPHY_REQUEST = 'FETCH_GIPHY_REQUEST'
 export const FETCH_GIPHY_SUCCESS = 'FETCH_GIPHY_SUCCESS'
 export const FETCH_GIPHY_FAILURE = 'FETCH_GIPHY_FAILURE'
@@ -8,7 +10,6 @@ export const FETCH_GIPHY_FAILURE = 'FETCH_GIPHY_FAILURE'
 export interface Gif {
   id: string
   title: string
-  import_datetime: string
   user?: {
     is_verified: boolean
     profile_url: string
@@ -21,9 +22,32 @@ export interface Gif {
   }
 }
 
+//Giphy Pagination Object
+export interface Pagination {
+  count: number
+  offset: number
+  total_count: number
+}
+
+//Giphy Meta Object
+export interface Meta {
+  status: HttpStatusCode
+  msg: string
+  response_id: string
+}
+
+//Giphy Result Object
+export interface Result {
+  data: Gif[]
+  meta?: Meta
+  pagination: Pagination
+}
+
 //Giphy Store State
 export interface GiphyState {
-  gifs: Gif[]
+  result: Result
+  term: string
+  page?: number
   isFetching: boolean
   error?: string
 }
@@ -40,7 +64,9 @@ export interface FetchGiphyRequestAction {
 export interface FetchGiphySuccessAction {
   type: typeof FETCH_GIPHY_SUCCESS
   payload: {
-    gifs: Gif[]
+    result: Result
+    term: string
+    page?: number
   }
 }
 

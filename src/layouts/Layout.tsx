@@ -9,12 +9,12 @@ const useStyles = makeStyles(() =>
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
-      // overflow: 'hidden',
+      overflow: 'hidden',
     },
     wrapper: {
       display: 'flex',
       flex: '1 1 auto',
-      // overflow: 'hidden',
+      overflow: 'hidden',
     },
     contentContainer: {
       display: 'flex',

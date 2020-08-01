@@ -74,10 +74,8 @@ const TimelineCard: FC<TimelineCardProps> = item => {
       </CardActions>
       <Collapse in={item.id === expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography>
-            {item.content}
-            {item.website && <Link href={item.website}>Link to Website</Link>}
-          </Typography>
+          <Typography>{item.content}</Typography>
+          <Typography>{item.website && <Link href={item.website}>Link to Website</Link>}</Typography>
         </CardContent>
       </Collapse>
     </Card>

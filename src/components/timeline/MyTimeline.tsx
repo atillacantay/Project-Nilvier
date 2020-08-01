@@ -112,6 +112,21 @@ const items: ITimelineItem[] = [
   },
   {
     id: 5,
+    icon: Code,
+    title: 'First Web Application Made With ASP.NET',
+    date: 'Oct 2018 → Feb 2019',
+    chips: [
+      { key: 0, label: 'asp.net' },
+      { key: 1, label: 'mysql' },
+      { key: 2, label: 'mvc' },
+      { key: 3, label: 'razor' },
+      { key: 4, label: 'elmah' },
+    ],
+    content:
+      'I have developed a web platform where information such as saving, deleting and updating the data of the employees of the company to the database can be performed and this information is displayed on the screen.',
+  },
+  {
+    id: 6,
     icon: BookOutlined,
     title: 'Computer Science (3.94/4), Bialystok University of Technology',
     date: 'Sep 2018 → Feb 2019',

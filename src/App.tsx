@@ -5,9 +5,13 @@ import About from './containers/About'
 import GiphyContainer from './containers/GiphyContainer'
 import FooditiveContainer from './containers/fooditive/FooditiveContainer'
 
-import Indicator from './components/Indicator'
+import Indicator from './components/LoadingScreen'
 import Layout from './layouts/Layout'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
+import Twitch from './containers/twitch/Twitch'
+import TwitchStreams from './containers/twitch/TwitchStreams'
+import Routes from './Routes'
+import LoadingScreen from './components/LoadingScreen'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -38,18 +42,18 @@ const useStyles = makeStyles(() =>
 const App: React.FC = () => {
   useStyles()
   return (
-    <Indicator>
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/giphy" component={GiphyContainer} />
-            <Route exact path="/fooditive" component={FooditiveContainer} />
-          </Switch>
-        </Layout>
-      </Router>
-    </Indicator>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/giphy" component={GiphyContainer} />
+          <Route exact path="/fooditive" component={FooditiveContainer} />
+          <Route exact path="/twitch" component={Twitch} />
+          <Route exact path="/twitch/streams/game/:game" component={TwitchStreams} />
+        </Switch>
+      </Layout>
+    </Router>
   )
 }
 

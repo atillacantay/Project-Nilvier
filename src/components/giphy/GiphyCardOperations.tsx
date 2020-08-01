@@ -13,6 +13,7 @@ const useStyles = makeStyles(() =>
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
+      backgroundColor: 'rgb(0, 0, 0, 0.2)',
     },
     header: {
       display: 'flex',

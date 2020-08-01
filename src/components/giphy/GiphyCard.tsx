@@ -35,6 +35,7 @@ const GiphyCard: React.FC<Props> = ({ gif }) => {
       raised={raised}
       onMouseEnter={handleRaise}
       onMouseLeave={handleRaise}
+      title={gif.title}
       style={{
         backgroundImage: `url(${gif.images.original.url})`,
       }}

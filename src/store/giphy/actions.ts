@@ -8,13 +8,15 @@ import Axios from 'axios'
 
 export type AppThunk = ActionCreator<ThunkAction<void, RootState, null, GiphyActionTypes>>
 
-export const giphyCall: AppThunk = (term: string) => async dispatch => {
+export const giphyCall: AppThunk = (term: string, page: number) => async dispatch => {
   dispatch({ type: FETCH_GIPHY_REQUEST, payload: {} })
   try {
     const response = await Axios.get(
-      `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${process.env.REACT_APP_GIPHY_API_KEY}`,
+      `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${process.env.REACT_APP_GIPHY_API_KEY}&offset=${
+        page * 25
+      }`,
     )
-    dispatch({ type: FETCH_GIPHY_SUCCESS, payload: { gifs: response.data.data } })
+    dispatch({ type: FETCH_GIPHY_SUCCESS, payload: { result: response.data, term, page } })
   } catch (error) {
     dispatch({ type: FETCH_GIPHY_FAILURE, payload: {} })
   }

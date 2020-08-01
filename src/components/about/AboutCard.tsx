@@ -58,9 +58,8 @@ const AboutCard: FC = () => {
           Backend Development. Have 2 deployed project which are contain react, redux, nodejs, mongodb, websocket etc.
         </Typography>
       </CardContent>
-
       <CardActions disableSpacing>
-        <IconButton aria-label="share">
+        <IconButton aria-label="share" disabled>
           <ShareIcon />
         </IconButton>
         <Button
