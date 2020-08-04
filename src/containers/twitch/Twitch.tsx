@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { fetchTopGames, fetchMoreGames } from '../../store/twitch/actions'
 import { RootState } from '../../store'
 import { Stream, TopGames } from '../../store/twitch/types'
+
 import TwitchGames from '../../components/twitch/TwitchGames'
 import TwitchCardIndicator from '../../components/indicators/TwitchCardIndicator'
+
+import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 
 // const PQUEEN = '137444898'
@@ -16,12 +18,18 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     twitchRoot: {
       display: 'flex',
+      flexDirection: 'column',
       height: '100%',
-      padding: theme.spacing(2),
       overflow: 'hidden auto',
     },
     errorAlert: {
       width: '100%',
+    },
+    title: {
+      fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+      fontWeight: 700,
+      color: '#9146FF',
+      margin: theme.spacing(1, 0),
     },
   }),
 )
@@ -50,11 +58,8 @@ const Twitch = () => {
   const handleScrolling = (event: React.SyntheticEvent<HTMLDivElement>) => {
     if (event.currentTarget.scrollHeight - event.currentTarget.scrollTop === event.currentTarget.clientHeight) {
       setOffset(offset + 10)
-      // dispatch(fetchMoreGames(offset + 10))
     }
   }
-
-  console.log(offset)
 
   useEffect(() => {
     if (offset) dispatch(fetchMoreGames(offset))
@@ -62,8 +67,16 @@ const Twitch = () => {
 
   return (
     <div className={classes.twitchRoot} onScroll={handleScrolling}>
+      <Box m={2}>
+        <Typography variant="h4" className={classes.title}>
+          Twitch Top Games
+        </Typography>
+        <Divider />
+      </Box>
       {isFetching ? (
-        <TwitchCardIndicator size={10} />
+        <Box m={1}>
+          <TwitchCardIndicator size={10} />
+        </Box>
       ) : !error && topGames._total > 0 ? (
         <TwitchGames topGames={topGames} isFetchingMore={isFetchingMore} />
       ) : (

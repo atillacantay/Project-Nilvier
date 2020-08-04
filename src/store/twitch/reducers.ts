@@ -13,6 +13,9 @@ import {
   FETCH_MORE_GAMES_REQUEST,
   FETCH_MORE_GAMES_SUCCESS,
   FETCH_MORE_GAMES_FAILURE,
+  FETCH_MORE_STREAMS_REQUEST,
+  FETCH_MORE_STREAMS_SUCCESS,
+  FETCH_MORE_STREAMS_FAILURE,
 } from './types'
 
 var streamObj = {
@@ -35,37 +38,10 @@ var streamObj = {
 
 export const initialState: TwitchState = {
   stream: streamObj,
-  streams: [
-    {
-      _id: 0,
-      channel: streamObj,
-      created_at: '',
-      game: '',
-      preview: {
-        large: '',
-      },
-      viewers: 0,
-    },
-  ],
+  streams: [],
   topGames: {
     _total: 0,
-    top: [
-      {
-        channels: 0,
-        viewers: 0,
-        game: {
-          _id: 0,
-          box: {
-            large: '',
-          },
-          giantbomb_id: 0,
-          logo: {
-            large: '',
-          },
-          name: '',
-        },
-      },
-    ],
+    top: [],
   },
   isFetchingMore: false,
   isFetching: false,
@@ -111,6 +87,26 @@ export function twitchReducer(state = initialState, action: TwitchActionTypes): 
       return {
         ...state,
         isFetching: false,
+        error: 'Error occured',
+      }
+
+    //FETCH MORE STREAMS
+    case FETCH_MORE_STREAMS_REQUEST:
+      return {
+        ...state,
+        isFetchingMore: true,
+        error: undefined,
+      }
+    case FETCH_MORE_STREAMS_SUCCESS:
+      return {
+        ...state,
+        isFetchingMore: false,
+        streams: [...state.streams.concat(action.payload)],
+      }
+    case FETCH_MORE_STREAMS_FAILURE:
+      return {
+        ...state,
+        isFetchingMore: false,
         error: 'Error occured',
       }
 

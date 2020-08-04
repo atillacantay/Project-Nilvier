@@ -6,6 +6,10 @@ export const FETCH_STREAMS_REQUEST = 'FETCH_STREAMS_REQUEST'
 export const FETCH_STREAMS_SUCCESS = 'FETCH_STREAMS_SUCCESS'
 export const FETCH_STREAMS_FAILURE = 'FETCH_STREAMS_FAILURE'
 
+export const FETCH_MORE_STREAMS_REQUEST = 'FETCH_MORE_STREAMS_REQUEST'
+export const FETCH_MORE_STREAMS_SUCCESS = 'FETCH_MORE_STREAMS_SUCCESS'
+export const FETCH_MORE_STREAMS_FAILURE = 'FETCH_MORE_STREAMS_FAILURE'
+
 export const FETCH_TOP_GAMES_REQUEST = 'FETCH_TOP_GAMES_REQUEST'
 export const FETCH_TOP_GAMES_SUCCESS = 'FETCH_TOP_GAMES_SUCCESS'
 export const FETCH_TOP_GAMES_FAILURE = 'FETCH_TOP_GAMES_FAILURE'
@@ -128,6 +132,28 @@ export interface FetchStreamsFailureAction {
   }
 }
 
+//Twitch More Streams Request Action
+export interface FetchMoreStreamsRequestAction {
+  type: typeof FETCH_MORE_STREAMS_REQUEST
+  payload: {
+    //no props
+  }
+}
+
+//Twitch More Streams Success Action
+export interface FetchMoreStreamsSuccessAction {
+  type: typeof FETCH_MORE_STREAMS_SUCCESS
+  payload: Streams[]
+}
+
+//Twitch More Streams Failure Action
+export interface FetchMoreStreamsFailureAction {
+  type: typeof FETCH_MORE_STREAMS_FAILURE
+  payload: {
+    //no props
+  }
+}
+
 //Twitch Games Request Action
 export interface FetchTopGamesRequestAction {
   type: typeof FETCH_TOP_GAMES_REQUEST
@@ -187,3 +213,6 @@ export type TwitchActionTypes =
   | FetchMoreGamesRequestAction
   | FetchMoreGamesSuccessAction
   | FetchMoreGamesFailureAction
+  | FetchMoreStreamsRequestAction
+  | FetchMoreStreamsSuccessAction
+  | FetchMoreStreamsFailureAction

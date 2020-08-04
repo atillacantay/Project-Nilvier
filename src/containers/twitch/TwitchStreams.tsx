@@ -1,13 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import { RootState } from '../../store'
-import { fetchStreams } from '../../store/twitch/actions'
+import { fetchStreams, fetchMoreStreams } from '../../store/twitch/actions'
 import { Streams } from '../../store/twitch/types'
 import StreamCard from '../../components/twitch/StreamCard'
 
-import { Grid, CircularProgress, createStyles, Theme, makeStyles, Button, Link, Typography } from '@material-ui/core'
+import {
+  Grid,
+  CircularProgress,
+  createStyles,
+  Theme,
+  makeStyles,
+  Button,
+  Link,
+  Typography,
+  Box,
+  LinearProgress,
+} from '@material-ui/core'
 import { ArrowBack } from '@material-ui/icons'
 import { Alert } from '@material-ui/lab'
 
@@ -15,7 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     streamsRoot: {
       display: 'flex',
-      margin: theme.spacing(2),
+      padding: theme.spacing(2),
+      height: '100%',
+      overflow: 'hidden auto',
     },
     title: {
       fontWeight: 600,
@@ -25,23 +38,38 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface StateProps {
   isFetching: boolean
+  isFetchingMore: boolean
   streams: Streams[]
   error?: string
 }
 
 const TwitchStreams = () => {
   const classes = useStyles()
+  const [offset, setOffset] = useState(0)
   const dispatch = useDispatch()
   let { pathname } = useLocation()
-  const { isFetching, streams, error } = useSelector<RootState, StateProps>(state => state.twitch, shallowEqual)
+  const { isFetching, isFetchingMore, streams, error } = useSelector<RootState, StateProps>(
+    state => state.twitch,
+    shallowEqual,
+  )
   const encodedPathname = encodeURIComponent(pathname.split('/')[4].trim()) //gets keyword from pathname and converts it to the true format
 
   useEffect(() => {
     if (pathname) dispatch(fetchStreams(encodedPathname))
   }, [pathname, dispatch, encodedPathname])
 
+  const handleScrolling = (event: React.SyntheticEvent<HTMLDivElement>) => {
+    if (event.currentTarget.scrollHeight - event.currentTarget.scrollTop === event.currentTarget.clientHeight) {
+      setOffset(offset + 10)
+    }
+  }
+
+  useEffect(() => {
+    if (offset) dispatch(fetchMoreStreams(encodedPathname, offset))
+  }, [offset, dispatch])
+
   return (
-    <div className={classes.streamsRoot}>
+    <div className={classes.streamsRoot} onScroll={handleScrolling}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Link component={RouterLink} to="/twitch" color="inherit" underline="none">
@@ -50,9 +78,10 @@ const TwitchStreams = () => {
             </Button>
           </Link>
         </Grid>
-
         {isFetching ? (
-          <CircularProgress />
+          <Grid item xs={12}>
+            <LinearProgress />
+          </Grid>
         ) : !error && streams.length > 0 ? (
           <>
             <Grid item xs={12}>
@@ -65,6 +94,11 @@ const TwitchStreams = () => {
                 <StreamCard stream={stream} />
               </Grid>
             ))}
+            {/* {isFetchingMore && (
+              <Grid item xs={12}>
+                <CircularProgress />
+              </Grid>
+            )} */}
           </>
         ) : (
           error && (

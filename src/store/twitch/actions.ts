@@ -16,6 +16,9 @@ import {
   FETCH_MORE_GAMES_REQUEST,
   FETCH_MORE_GAMES_SUCCESS,
   FETCH_MORE_GAMES_FAILURE,
+  FETCH_MORE_STREAMS_REQUEST,
+  FETCH_MORE_STREAMS_SUCCESS,
+  FETCH_MORE_STREAMS_FAILURE,
 } from './types'
 import { RootState } from '..'
 import Axios from 'axios'
@@ -40,7 +43,7 @@ export const fetchStream: AppThunk = (id: number) => async dispatch => {
 export const fetchStreams: AppThunk = (game: string) => async dispatch => {
   dispatch({ type: FETCH_STREAMS_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`https://api.twitch.tv/kraken/streams/?game=${game}`, {
+    const response = await Axios.get(`https://api.twitch.tv/kraken/streams/?game=${game}&limit=10`, {
       headers: {
         'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
         Accept: 'application/vnd.twitchtv.v5+json',
@@ -49,6 +52,21 @@ export const fetchStreams: AppThunk = (game: string) => async dispatch => {
     dispatch({ type: FETCH_STREAMS_SUCCESS, payload: response.data.streams })
   } catch (error) {
     dispatch({ type: FETCH_STREAMS_FAILURE, payload: {} })
+  }
+}
+
+export const fetchMoreStreams: AppThunk = (game: string, offset: number) => async dispatch => {
+  dispatch({ type: FETCH_MORE_STREAMS_REQUEST, payload: {} })
+  try {
+    const response = await Axios.get(`https://api.twitch.tv/kraken/streams/?game=${game}&limit=10&offset=${offset}`, {
+      headers: {
+        'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+        Accept: 'application/vnd.twitchtv.v5+json',
+      },
+    })
+    dispatch({ type: FETCH_MORE_STREAMS_SUCCESS, payload: response.data.streams })
+  } catch (error) {
+    dispatch({ type: FETCH_MORE_STREAMS_FAILURE, payload: {} })
   }
 }
 
