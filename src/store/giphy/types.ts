@@ -1,10 +1,14 @@
 // src/store/giphy/types.ts
 
-import HttpStatusCode from "../../types/HttpStatusCode"
+import HttpStatusCode from '../../types/HttpStatusCode'
 
-export const FETCH_GIPHY_REQUEST = 'FETCH_GIPHY_REQUEST'
-export const FETCH_GIPHY_SUCCESS = 'FETCH_GIPHY_SUCCESS'
-export const FETCH_GIPHY_FAILURE = 'FETCH_GIPHY_FAILURE'
+export const FETCH_GIFS_REQUEST = 'FETCH_GIFS_REQUEST'
+export const FETCH_GIFS_SUCCESS = 'FETCH_GIFS_SUCCESS'
+export const FETCH_GIFS_FAILURE = 'FETCH_GIFS_FAILURE'
+
+export const FETCH_MORE_GIFS_REQUEST = 'FETCH_MORE_GIFS_REQUEST'
+export const FETCH_MORE_GIFS_SUCCESS = 'FETCH_MORE_GIFS_SUCCESS'
+export const FETCH_MORE_GIFS_FAILURE = 'FETCH_MORE_GIFS_FAILURE'
 
 //Giphy Gif Object
 export interface Gif {
@@ -47,35 +51,62 @@ export interface Result {
 export interface GiphyState {
   result: Result
   term: string
-  page?: number
   isFetching: boolean
+  isFetchingMore: boolean
   error?: string
 }
 
 //Giphy Request Action
-export interface FetchGiphyRequestAction {
-  type: typeof FETCH_GIPHY_REQUEST
+export interface FetchGifsRequestAction {
+  type: typeof FETCH_GIFS_REQUEST
   payload: {
     //no props
   }
 }
 
 //Giphy Success Action
-export interface FetchGiphySuccessAction {
-  type: typeof FETCH_GIPHY_SUCCESS
+export interface FetchGifsSuccessAction {
+  type: typeof FETCH_GIFS_SUCCESS
   payload: {
     result: Result
     term: string
-    page?: number
   }
 }
 
 //Giphy Failure Action
-export interface FetchGiphyFailureAction {
-  type: typeof FETCH_GIPHY_FAILURE
+export interface FetchGifsFailureAction {
+  type: typeof FETCH_GIFS_FAILURE
   payload: {
     //no props
   }
 }
 
-export type GiphyActionTypes = FetchGiphyRequestAction | FetchGiphySuccessAction | FetchGiphyFailureAction
+//Giphy More Request Action
+export interface FetchMoreGifsRequestAction {
+  type: typeof FETCH_MORE_GIFS_REQUEST
+  payload: {
+    //no props
+  }
+}
+
+//Giphy More Success Action
+export interface FetchMoreGifsSuccessAction {
+  type: typeof FETCH_MORE_GIFS_SUCCESS
+  payload: Result
+}
+
+//Giphy More Failure Action
+export interface FetchMoreGifsFailureAction {
+  type: typeof FETCH_MORE_GIFS_FAILURE
+  payload: {
+    //no props
+  }
+}
+
+export type GiphyActionTypes =
+  | FetchGifsRequestAction
+  | FetchGifsSuccessAction
+  | FetchGifsFailureAction
+  | FetchMoreGifsRequestAction
+  | FetchMoreGifsSuccessAction
+  | FetchMoreGifsFailureAction

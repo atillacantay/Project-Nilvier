@@ -52,8 +52,8 @@ const Twitch = () => {
   )
 
   useEffect(() => {
-    dispatch(fetchTopGames())
-  }, [dispatch])
+    if (topGames.top.length === 0) dispatch(fetchTopGames())
+  }, [dispatch, topGames])
 
   const handleScrolling = (event: React.SyntheticEvent<HTMLDivElement>) => {
     if (event.currentTarget.scrollHeight - event.currentTarget.scrollTop === event.currentTarget.clientHeight) {
