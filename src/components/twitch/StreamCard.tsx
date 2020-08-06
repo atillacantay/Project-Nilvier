@@ -40,6 +40,7 @@ type StateProps = {
 
 const StreamCard: FC<StateProps> = ({ stream }) => {
   const classes = useStyles()
+  const parent = process.env.NODE_ENV === 'development' ? 'localhost' : process.env.REACT_APP_PUBLIC_URL
   const [raised, setRaised] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
 
@@ -111,7 +112,7 @@ const StreamCard: FC<StateProps> = ({ stream }) => {
         height={226}
         image={
           isPlaying
-            ? `https://player.twitch.tv/?channel=${stream.channel.name}&parent=localhost&muted=true`
+            ? `https://player.twitch.tv/?channel=${stream.channel.name}&parent=${parent}&muted=true`
             : stream.preview.large
         }
         title={stream.channel.status}
