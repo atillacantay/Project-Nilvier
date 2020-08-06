@@ -40,7 +40,7 @@ type StateProps = {
 
 const StreamCard: FC<StateProps> = ({ stream }) => {
   const classes = useStyles()
-  const parent = process.env.NODE_ENV === 'development' ? 'localhost' : process.env.REACT_APP_PUBLIC_URL
+  const parent = process.env.NODE_ENV === 'development' ? 'localhost' : process.env.REACT_APP_TWITCH_PARENT_URL
   const [raised, setRaised] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
 
