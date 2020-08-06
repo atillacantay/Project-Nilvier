@@ -35,6 +35,7 @@ const GameCard: FC<Props> = ({ topGame }) => {
   const handleRaise = () => {
     setRaised(!raised)
   }
+
   const encodedGameName = encodeURIComponent(topGame.game.name.trim())
 
   return (

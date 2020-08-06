@@ -20,24 +20,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const LoadingScreen: FC = ({ children }) => {
+const LoadingScreen: FC = () => {
   const classes = useStyles()
-  const [isLoading, setLoading] = useState(true)
 
-  useEffect(() => {
-    setLoading(false)
-  }, [])
-
-  if (isLoading)
-    return (
-      <div className={classes.root}>
-        <Box width={400}>
-          <LinearProgress className={classes.indicator} />
-        </Box>
-      </div>
-    )
-
-  return <>{children}</>
+  return (
+    <div className={classes.root}>
+      <Box width={400}>
+        <LinearProgress className={classes.indicator} />
+      </Box>
+    </div>
+  )
 }
 
 export default LoadingScreen

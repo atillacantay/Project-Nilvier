@@ -5,7 +5,19 @@ import Moment from 'react-moment'
 import { Streams } from '../../store/twitch/types'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { Card, CardMedia, CardContent, Typography, Avatar, Theme, Grid, Box, Badge, Tooltip } from '@material-ui/core'
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Avatar,
+  Theme,
+  Grid,
+  Box,
+  Badge,
+  Tooltip,
+  Fade,
+} from '@material-ui/core'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser'
 
@@ -29,13 +41,35 @@ type StateProps = {
 const StreamCard: FC<StateProps> = ({ stream }) => {
   const classes = useStyles()
   const [raised, setRaised] = useState(false)
+  const [isPlaying, setPlaying] = useState(false)
 
-  const handleRaise = () => {
-    setRaised(!raised)
+  const handleMouseEnter = () => {
+    setRaised(true)
+    setTimeout(() => {
+      setPlaying(true)
+    }, 1000)
   }
 
+  const handleMouseLeave = () => {
+    setRaised(false)
+    setPlaying(false)
+  }
+
+  // const PlayableContent = () => {
+  //   return (
+  //     <iframe
+  //       src={`https://player.twitch.tv/?channel=${stream.channel.name}&parent=localhost&muted=true`}
+  //       height="226"
+  //       width="403"
+  //       frameBorder="0"
+  //       scrolling="no"
+  //       allowFullScreen={false}
+  //     ></iframe>
+  //   )
+  // }
+
   return (
-    <Card className={classes.root} raised={raised} onMouseEnter={handleRaise} onMouseLeave={handleRaise}>
+    <Card className={classes.root} raised={raised} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Box p={2}>
         <Grid container>
           <Grid item xs={3}>
@@ -72,9 +106,14 @@ const StreamCard: FC<StateProps> = ({ stream }) => {
         </Grid>
       </Box>
       <CardMedia
-        component="img"
+        component={isPlaying ? 'iframe' : 'img'}
         alt={stream.channel.status}
-        image={stream.preview.large}
+        height={226}
+        image={
+          isPlaying
+            ? `https://player.twitch.tv/?channel=${stream.channel.name}&parent=localhost&muted=true`
+            : stream.preview.large
+        }
         title={stream.channel.status}
       />
       <CardContent>

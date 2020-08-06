@@ -187,9 +187,7 @@ export interface FetchMoreGamesRequestAction {
 //Twitch More Games Success Action
 export interface FetchMoreGamesSuccessAction {
   type: typeof FETCH_MORE_GAMES_SUCCESS
-  payload: {
-    top: Games[]
-  }
+  payload: TopGames
 }
 
 //Twitch More Games Failure Action

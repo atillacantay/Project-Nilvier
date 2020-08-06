@@ -7,20 +7,10 @@ import { fetchStreams, fetchMoreStreams } from '../../store/twitch/actions'
 import { Streams } from '../../store/twitch/types'
 import StreamCard from '../../components/twitch/StreamCard'
 
-import {
-  Grid,
-  CircularProgress,
-  createStyles,
-  Theme,
-  makeStyles,
-  Button,
-  Link,
-  Typography,
-  Box,
-  LinearProgress,
-} from '@material-ui/core'
+import { Grid, createStyles, Theme, makeStyles, Button, Link, Typography, LinearProgress } from '@material-ui/core'
 import { ArrowBack } from '@material-ui/icons'
 import { Alert } from '@material-ui/lab'
+import { encoder } from '../../utils/encoder'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -48,11 +38,9 @@ const TwitchStreams = () => {
   const [offset, setOffset] = useState(0)
   const dispatch = useDispatch()
   let { pathname } = useLocation()
-  const { isFetching, isFetchingMore, streams, error } = useSelector<RootState, StateProps>(
-    state => state.twitch,
-    shallowEqual,
-  )
-  const encodedPathname = encodeURIComponent(pathname.split('/')[4].trim()) //gets keyword from pathname and converts it to the true format
+  const { isFetching, streams, error } = useSelector<RootState, StateProps>(state => state.twitch, shallowEqual)
+
+  const encodedPathname = encoder(pathname)
 
   useEffect(() => {
     if (pathname) dispatch(fetchStreams(encodedPathname))
@@ -66,7 +54,7 @@ const TwitchStreams = () => {
 
   useEffect(() => {
     if (offset) dispatch(fetchMoreStreams(encodedPathname, offset))
-  }, [offset, dispatch])
+  }, [offset, dispatch, encodedPathname])
 
   return (
     <div className={classes.streamsRoot} onScroll={handleScrolling}>

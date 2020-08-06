@@ -1,17 +1,11 @@
-import React from 'react'
+import React, { Suspense, FC } from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import MainPage from './containers/MainPage'
-import About from './containers/About'
-import GiphyContainer from './containers/GiphyContainer'
-import FooditiveContainer from './containers/fooditive/FooditiveContainer'
 
-import Indicator from './components/LoadingScreen'
+import { routes } from './Routes'
 import Layout from './layouts/Layout'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-import Twitch from './containers/twitch/Twitch'
-import TwitchStreams from './containers/twitch/TwitchStreams'
-import Routes from './Routes'
 import LoadingScreen from './components/LoadingScreen'
+
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -39,21 +33,30 @@ const useStyles = makeStyles(() =>
   }),
 )
 
-const App: React.FC = () => {
+const App: FC = () => {
   useStyles()
+
+  const routeComponents = routes.map(({ exact, path, component }, key) => (
+    <Route exact={exact} path={path} component={component} key={key} />
+  ))
+
   return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
+    <Suspense fallback={<LoadingScreen />}>
+      <Router>
+        <Layout>
+          <Switch>
+            {routeComponents}
+            {/* <Route exact path="/" component={MainPage} />
           <Route exact path="/about" component={About} />
           <Route exact path="/giphy" component={GiphyContainer} />
           <Route exact path="/fooditive" component={FooditiveContainer} />
           <Route exact path="/twitch" component={Twitch} />
           <Route exact path="/twitch/streams/game/:game" component={TwitchStreams} />
-        </Switch>
-      </Layout>
-    </Router>
+          <Route component={NotFound} /> */}
+          </Switch>
+        </Layout>
+      </Router>
+    </Suspense>
   )
 }
 

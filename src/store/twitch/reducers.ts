@@ -141,7 +141,7 @@ export function twitchReducer(state = initialState, action: TwitchActionTypes): 
       return {
         ...state,
         isFetchingMore: false,
-        topGames: { ...state.topGames, top: [...state.topGames.top.concat(action.payload.top)] },
+        topGames: { ...state.topGames, _total: action.payload._total, top: [...state.topGames.top.concat(action.payload.top)] },
       }
     case FETCH_MORE_GAMES_FAILURE:
       return {
