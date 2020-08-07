@@ -9,6 +9,7 @@ import TwitchCardIndicator from '../../components/indicators/TwitchCardIndicator
 
 import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
+import useScrollBottom from '../../hooks/useScrollBottom'
 
 // const PQUEEN = '137444898'
 // const JAHREIN = '6768122'
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: 'hidden auto',
     },
     errorAlert: {
-      width: '100%',
+      margin: theme.spacing(2),
     },
     title: {
       fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
@@ -44,6 +45,7 @@ interface StateProps {
 
 const Twitch = () => {
   const classes = useStyles()
+  const [isBottom, scrollRef] = useScrollBottom()
   const [offset, setOffset] = useState(0)
   const dispatch = useDispatch()
   const { isFetching, isFetchingMore, topGames, error } = useSelector<RootState, StateProps>(
@@ -52,21 +54,19 @@ const Twitch = () => {
   )
 
   useEffect(() => {
-    if (topGames.top.length === 0) dispatch(fetchTopGames())
-  }, [dispatch, topGames])
+    dispatch(fetchTopGames())
+  }, [dispatch])
 
-  const handleScrolling = (event: React.SyntheticEvent<HTMLDivElement>) => {
-    if (event.currentTarget.scrollHeight - event.currentTarget.scrollTop === event.currentTarget.clientHeight) {
-      setOffset(offset + 10)
-    }
-  }
+  useEffect(() => {
+    if (isBottom) setOffset(offset + 10)
+  }, [isBottom, setOffset])
 
   useEffect(() => {
     if (offset) dispatch(fetchMoreGames(offset))
   }, [offset, dispatch])
 
   return (
-    <div className={classes.twitchRoot} onScroll={handleScrolling}>
+    <div className={classes.twitchRoot} ref={scrollRef}>
       <Box m={2}>
         <Typography variant="h4" className={classes.title}>
           Twitch Top Games
@@ -74,7 +74,7 @@ const Twitch = () => {
         <Divider />
       </Box>
       {isFetching ? (
-        <Box m={1}>
+        <Box m={2}>
           <TwitchCardIndicator size={10} />
         </Box>
       ) : !error && topGames._total > 0 ? (

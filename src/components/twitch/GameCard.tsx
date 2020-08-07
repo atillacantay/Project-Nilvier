@@ -40,7 +40,7 @@ const GameCard: FC<Props> = ({ topGame }) => {
 
   return (
     <div className={classes.gameCardRoot}>
-      <Link to={`twitch/streams/game/${encodedGameName}`}>
+      <Link to={`/twitch/streams/game/${encodedGameName}`}>
         <Card raised={raised} onMouseEnter={handleRaise} onMouseLeave={handleRaise}>
           <CardActionArea>
             <CardMedia

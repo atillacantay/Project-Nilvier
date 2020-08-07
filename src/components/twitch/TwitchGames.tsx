@@ -3,7 +3,7 @@ import { TopGames } from '../../store/twitch/types'
 
 import GameCard from './GameCard'
 
-import { Grid, Typography, Box, makeStyles, createStyles, Theme, Divider, CircularProgress } from '@material-ui/core'
+import { Grid, Box, makeStyles, createStyles, Theme, CircularProgress, Fade } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,7 +28,7 @@ const TwitchGames: FC<StateProps> = ({ topGames, isFetchingMore }) => {
     <div className={classes.gamesRoot}>
       <Grid container spacing={4}>
         {topGames.top.map(topGame => (
-          <Grid key={topGame.game._id} item xs={12} sm={6} md={4} lg={3}>
+          <Grid key={topGame.game._id} item xs={12} sm={6} md={4} lg={3} xl={2}>
             <GameCard topGame={topGame} />
           </Grid>
         ))}

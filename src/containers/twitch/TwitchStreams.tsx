@@ -11,6 +11,7 @@ import { Grid, createStyles, Theme, makeStyles, Button, Link, Typography, Linear
 import { ArrowBack } from '@material-ui/icons'
 import { Alert } from '@material-ui/lab'
 import { encoder } from '../../utils/encoder'
+import useScrollBottom from '../../hooks/useScrollBottom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,9 +36,10 @@ interface StateProps {
 
 const TwitchStreams = () => {
   const classes = useStyles()
-  const [offset, setOffset] = useState(0)
+  const [isBottom, scrollRef] = useScrollBottom()
   const dispatch = useDispatch()
-  let { pathname } = useLocation()
+  const [offset, setOffset] = useState(0)
+  const { pathname } = useLocation()
   const { isFetching, streams, error } = useSelector<RootState, StateProps>(state => state.twitch, shallowEqual)
 
   const encodedPathname = encoder(pathname)
@@ -46,18 +48,16 @@ const TwitchStreams = () => {
     if (pathname) dispatch(fetchStreams(encodedPathname))
   }, [pathname, dispatch, encodedPathname])
 
-  const handleScrolling = (event: React.SyntheticEvent<HTMLDivElement>) => {
-    if (event.currentTarget.scrollHeight - event.currentTarget.scrollTop === event.currentTarget.clientHeight) {
-      setOffset(offset + 10)
-    }
-  }
+  useEffect(() => {
+    if (isBottom) setOffset(offset + 10)
+  }, [isBottom, setOffset])
 
   useEffect(() => {
     if (offset) dispatch(fetchMoreStreams(encodedPathname, offset))
   }, [offset, dispatch, encodedPathname])
 
   return (
-    <div className={classes.streamsRoot} onScroll={handleScrolling}>
+    <div className={classes.streamsRoot} ref={scrollRef}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Link component={RouterLink} to="/twitch" color="inherit" underline="none">

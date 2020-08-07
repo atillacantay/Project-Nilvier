@@ -1,6 +1,7 @@
 import MainPage from './containers/MainPage'
 import { lazy } from 'react'
 import TwitchStreams from './containers/twitch/TwitchStreams'
+import TwitchStreamerPage from './containers/twitch/TwitchStreamerPage'
 
 export const routes = [
   { exact: true, path: '/', component: MainPage },
@@ -12,6 +13,11 @@ export const routes = [
     exact: true,
     path: '/twitch/streams/game/:game',
     component: TwitchStreams,
+  },
+  {
+    exact: true,
+    path: '/twitch/:name',
+    component: TwitchStreamerPage,
   },
   { component: lazy(() => import('./components/NotFound')) },
 ]

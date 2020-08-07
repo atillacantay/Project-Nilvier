@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { FC } from 'react'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { LinearProgress, Theme, Box } from '@material-ui/core'
 

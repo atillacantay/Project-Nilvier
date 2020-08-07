@@ -5,6 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import reduxThunk from 'redux-thunk'
 import './index.css'
 import App from './App'
+import { SnackbarProvider } from 'notistack'
 import { CssBaseline } from '@material-ui/core'
 import * as serviceWorker from './serviceWorker'
 
@@ -25,8 +26,10 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThu
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider>
-      <CssBaseline />
-      <App />
+      <SnackbarProvider maxSnack={1}>
+        <CssBaseline />
+        <App />
+      </SnackbarProvider>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root'),

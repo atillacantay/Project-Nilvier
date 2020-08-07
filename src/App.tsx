@@ -1,11 +1,13 @@
 import React, { Suspense, FC } from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { useNetwork } from './hooks/useNetwork'
 
 import { routes } from './Routes'
 import Layout from './layouts/Layout'
 import LoadingScreen from './components/LoadingScreen'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
+import ErrorBoundary from './components/ErrorBoundary'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -35,28 +37,24 @@ const useStyles = makeStyles(() =>
 
 const App: FC = () => {
   useStyles()
+  const isOnline = useNetwork()
+
+  if (!isOnline) console.log('No Internet Connection')
 
   const routeComponents = routes.map(({ exact, path, component }, key) => (
     <Route exact={exact} path={path} component={component} key={key} />
   ))
 
   return (
-    <Suspense fallback={<LoadingScreen />}>
-      <Router>
-        <Layout>
-          <Switch>
-            {routeComponents}
-            {/* <Route exact path="/" component={MainPage} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/giphy" component={GiphyContainer} />
-          <Route exact path="/fooditive" component={FooditiveContainer} />
-          <Route exact path="/twitch" component={Twitch} />
-          <Route exact path="/twitch/streams/game/:game" component={TwitchStreams} />
-          <Route component={NotFound} /> */}
-          </Switch>
-        </Layout>
-      </Router>
-    </Suspense>
+    <Router>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingScreen />}>
+          <Layout>
+            <Switch>{routeComponents}</Switch>
+          </Layout>
+        </Suspense>
+      </ErrorBoundary>
+    </Router>
   )
 }
 

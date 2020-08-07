@@ -58,7 +58,7 @@ export const fetchStreams: AppThunk = (game: string) => async dispatch => {
 export const fetchMoreStreams: AppThunk = (game: string, offset: number) => async dispatch => {
   dispatch({ type: FETCH_MORE_STREAMS_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`https://api.twitch.tv/kraken/streams/?game=${game}&limit=10&offset=${offset}`, {
+    const response = await Axios.get(`https://api.twitch.tv/kraken/streams/?game=${game}&offset=${offset}&limit=10`, {
       headers: {
         'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
         Accept: 'application/vnd.twitchtv.v5+json',
@@ -88,7 +88,7 @@ export const fetchTopGames: AppThunk = () => async dispatch => {
 export const fetchMoreGames: AppThunk = (offset: number) => async dispatch => {
   dispatch({ type: FETCH_MORE_GAMES_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`https://api.twitch.tv/kraken/games/top?offset=${offset}`, {
+    const response = await Axios.get(`https://api.twitch.tv/kraken/games/top?offset=${offset}&limit=10`, {
       headers: {
         'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
         Accept: 'application/vnd.twitchtv.v5+json',
