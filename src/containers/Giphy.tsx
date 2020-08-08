@@ -37,7 +37,7 @@ export interface GiphyDispatchProps {
   fetchMoreGifs: (term: string, offset: number) => void
 }
 
-interface IFormInput {
+type IFormInput = {
   term: string
 }
 

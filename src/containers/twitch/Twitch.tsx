@@ -5,9 +5,10 @@ import { RootState } from '../../store'
 import { Stream, TopGames } from '../../store/twitch/types'
 
 import TwitchGames from '../../components/twitch/TwitchGames'
+import TwitchHeader from '../../components/twitch/TwitchHeader'
 import TwitchCardIndicator from '../../components/indicators/TwitchCardIndicator'
 
-import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@material-ui/core'
+import { makeStyles, createStyles, Box, Theme } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import useScrollBottom from '../../hooks/useScrollBottom'
 
@@ -67,12 +68,7 @@ const Twitch = () => {
 
   return (
     <div className={classes.twitchRoot} ref={scrollRef}>
-      <Box m={2}>
-        <Typography variant="h4" className={classes.title}>
-          Twitch Top Games
-        </Typography>
-        <Divider />
-      </Box>
+      <TwitchHeader />
       {isFetching ? (
         <Box m={2}>
           <TwitchCardIndicator size={10} />
