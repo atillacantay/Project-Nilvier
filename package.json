@@ -35,13 +35,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "cd backend && npm install && npm start"
+    "deploy": "gh-pages -d build"  
   },
   "eslintConfig": {
     "extends": "react-app"
