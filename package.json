@@ -19,6 +19,7 @@
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.5",
     "moment": "^2.27.0",
     "notistack": "^0.9.17",
     "react": "^16.13.1",
@@ -66,5 +67,6 @@
     "prettier": "^2.0.5",
     "tslint": "^6.1.2",
     "typescript": "^3.9.7"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

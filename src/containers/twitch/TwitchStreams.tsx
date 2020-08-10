@@ -49,7 +49,7 @@ const TwitchStreams = () => {
   }, [pathname, dispatch, encodedPathname])
 
   useEffect(() => {
-    if (isBottom) setOffset(offset + 10)
+    if (isBottom) setOffset(offset + 25)
   }, [isBottom, setOffset])
 
   useEffect(() => {

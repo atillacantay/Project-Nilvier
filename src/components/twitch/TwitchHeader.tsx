@@ -101,10 +101,10 @@ const TwitchHeader = () => {
           autoComplete="off"
           variant="outlined"
           className={classes.searchInput}
-          placeholder="Search a streamer"
+          placeholder="Search users"
           InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
+            startAdornment: (
+              <InputAdornment position="start">
                 <SearchIcon />
               </InputAdornment>
             ),

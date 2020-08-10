@@ -3,13 +3,17 @@ import BodyParser = require('body-parser')
 import dotenv = require('dotenv')
 import cors = require('cors')
 import { MongoClient } from 'mongodb'
-import { DB_URL } from './configs/Credentials'
 import fooditiveRouter from './routers/FooditiveRouter'
+import twitchRouter from './routers/TwitchRouter'
+import configs from './configs'
 
 const app: express.Application = express()
 dotenv.config()
 const PORT = process.env.PORT || 5000
-const client = new MongoClient(process.env.DB_URL || DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const client = new MongoClient(process.env.DB_URL || configs.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 app.use(BodyParser.json())
 app.use(BodyParser.urlencoded({ extended: true }))
@@ -23,7 +27,9 @@ app.use(cors())
 // })
 
 // Handles /fooditive routes
-app.use('/fooditive', fooditiveRouter)
+app.use('/api/fooditive', fooditiveRouter)
+// Handles /twitch routes
+app.use('/api/twitch', twitchRouter)
 
 app.get('/', function (req, res) {
   res.send('Hello World!')

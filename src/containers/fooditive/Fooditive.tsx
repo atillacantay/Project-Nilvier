@@ -35,7 +35,7 @@ const Fooditive: FC<Props> = ({ categories, isFetching, error, fetchProducts }) 
 
   useEffect(() => {
     fetchProducts()
-    Axios.get('http://localhost:5000/fooditive')
+    Axios.get('/api/fooditive')
       .then(function (response) {
         console.log(response.data)
       })

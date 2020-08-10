@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { Grid, createStyles, Theme, makeStyles, Fade, Button, IconButton, Hidden, Tooltip } from '@material-ui/core'
+import { Grid, createStyles, Theme, makeStyles, Fade, IconButton, Tooltip } from '@material-ui/core'
 import { Visibility, VisibilityOff } from '@material-ui/icons/'
 
 const useStyles = makeStyles((theme: Theme) =>
