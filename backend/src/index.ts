@@ -1,4 +1,5 @@
 import express = require('express')
+import path = require('path')
 import BodyParser = require('body-parser')
 import dotenv = require('dotenv')
 import cors = require('cors')
@@ -42,3 +43,10 @@ app.listen(PORT, function () {
     console.log('Connected to database')
   })
 })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../build')))
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'))
+  })
+}
