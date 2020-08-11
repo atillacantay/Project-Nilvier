@@ -23,6 +23,7 @@ import {
 import { RootState } from '..'
 import Axios from 'axios'
 import { TwitchAPI } from '../../apis/twitch'
+import { API } from '../../apis/api'
 
 export type AppThunk = ActionCreator<ThunkAction<void, RootState, null, TwitchActionTypes>>
 
@@ -44,7 +45,7 @@ export const fetchStream: AppThunk = (id: number) => async dispatch => {
 export const fetchStreams: AppThunk = (game: string) => async dispatch => {
   dispatch({ type: FETCH_STREAMS_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`/api/twitch/streams`, { params: { game } })
+    const response = await API.get(`/api/twitch/streams`, { params: { game } })
     dispatch({ type: FETCH_STREAMS_SUCCESS, payload: response.data.streams })
   } catch (error) {
     dispatch({ type: FETCH_STREAMS_FAILURE, payload: {} })
@@ -54,7 +55,7 @@ export const fetchStreams: AppThunk = (game: string) => async dispatch => {
 export const fetchMoreStreams: AppThunk = (game: string, offset: number) => async dispatch => {
   dispatch({ type: FETCH_MORE_STREAMS_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`/api/twitch/more-streams`, { params: { game, offset } })
+    const response = await API.get(`/api/twitch/more-streams`, { params: { game, offset } })
     dispatch({ type: FETCH_MORE_STREAMS_SUCCESS, payload: response.data.streams })
   } catch (error) {
     dispatch({ type: FETCH_MORE_STREAMS_FAILURE, payload: {} })
@@ -64,7 +65,7 @@ export const fetchMoreStreams: AppThunk = (game: string, offset: number) => asyn
 export const fetchTopGames: AppThunk = () => async dispatch => {
   dispatch({ type: FETCH_TOP_GAMES_REQUEST, payload: {} })
   try {
-    const response = await Axios.get('/api/twitch/top-games')
+    const response = await API.get('/api/twitch/top-games')
     dispatch({ type: FETCH_TOP_GAMES_SUCCESS, payload: response.data })
   } catch (error) {
     dispatch({ type: FETCH_TOP_GAMES_FAILURE, payload: {} })
@@ -74,7 +75,7 @@ export const fetchTopGames: AppThunk = () => async dispatch => {
 export const fetchMoreGames: AppThunk = (offset: number) => async dispatch => {
   dispatch({ type: FETCH_MORE_GAMES_REQUEST, payload: {} })
   try {
-    const response = await Axios.get('/api/twitch/more-top-games', { params: { offset } })
+    const response = await API.get('/api/twitch/more-top-games', { params: { offset } })
     dispatch({ type: FETCH_MORE_GAMES_SUCCESS, payload: response.data })
   } catch (error) {
     dispatch({ type: FETCH_MORE_GAMES_FAILURE, payload: {} })

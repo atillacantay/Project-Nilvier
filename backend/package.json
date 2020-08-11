@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },  
   "scripts": {
-    "start": "node src/index.ts",
-    "build": "tsc",
+    "ts:build": "tsc",
+    "build": "npm run ts:build",
+    "prod:serve": "node src/index.ts",
+    "start": "npm run build && npm run prod:serve",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],
