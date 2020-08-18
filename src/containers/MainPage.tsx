@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import logo from '../logo.svg'
 import '../App.css'
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MainPage: FC = () => {
+const MainPage = () => {
   const classes = useStyles()
   return (
     <div className={classes.mainRoot}>
@@ -59,4 +59,5 @@ const buttons = [
   { key: 1, route: '/giphy', child: 'giphy' },
   { key: 2, route: '/fooditive', child: 'fooditive' },
   { key: 3, route: '/twitch', child: 'twitch' },
+  { key: 4, route: '/movies', child: 'movies' },
 ]

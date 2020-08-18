@@ -14,7 +14,7 @@ const TwitchCardIndicator: FC<StateProps> = ({ size }) => {
   return (
     <Grid container spacing={4}>
       {items.map((item, index) => (
-        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+        <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
           <Skeleton variant="rect" height={411} animation="wave" />
           <Box pt={1} display="flex" justifyContent="space-between">
             <Skeleton variant="text" width={120} height={24} animation="wave" />

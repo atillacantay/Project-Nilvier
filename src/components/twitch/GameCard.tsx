@@ -11,29 +11,27 @@ import LiveTvIcon from '@material-ui/icons/LiveTv'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     gameCardRoot: {},
-    image: {
-      objectFit: 'fill',
-    },
-    gameDetails: {
+    gameCardDetails: {
       marginTop: theme.spacing(1),
       display: 'flex',
       justifyContent: 'space-between',
     },
-    text: {
+    margin: {
       marginLeft: theme.spacing(1),
     },
   }),
 )
 
-type Props = {
+interface GameCardProps {
   topGame: Games
 }
 
-const GameCard: FC<Props> = ({ topGame }) => {
+const GameCard: FC<GameCardProps> = ({ topGame }) => {
   const classes = useStyles()
   const [raised, setRaised] = useState(false)
+
   const handleRaise = () => {
-    setRaised(!raised)
+    setRaised(raised => !raised)
   }
 
   const encodedGameName = encodeURIComponent(topGame.game.name.trim())
@@ -45,7 +43,6 @@ const GameCard: FC<Props> = ({ topGame }) => {
           <CardActionArea>
             <CardMedia
               component="img"
-              className={classes.image}
               alt={topGame.game.name}
               image={topGame.game.box.large}
               title={topGame.game.name}
@@ -53,22 +50,22 @@ const GameCard: FC<Props> = ({ topGame }) => {
           </CardActionArea>
         </Card>
       </Link>
-      <div className={classes.gameDetails}>
+      <div className={classes.gameCardDetails}>
         <Typography variant="body2">{topGame.game.name}</Typography>
-        <Box>
+        <div>
           <Box display="flex" title="Live Streamers">
             <LiveTvIcon color="action" fontSize="small" />
-            <Typography variant="body2" className={classes.text}>
+            <Typography variant="body2" className={classes.margin}>
               {topGame.channels}
             </Typography>
           </Box>
           <Box display="flex" title="Viewers">
             <VisibilityOutlinedIcon color="action" fontSize="small" />
-            <Typography variant="body2" className={classes.text}>
+            <Typography variant="body2" className={classes.margin}>
               {topGame.viewers}
             </Typography>
           </Box>
-        </Box>
+        </div>
       </div>
     </div>
   )

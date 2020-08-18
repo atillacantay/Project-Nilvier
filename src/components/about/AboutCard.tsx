@@ -54,8 +54,9 @@ const AboutCard: FC = () => {
       <CardContent>
         <Typography variant="h6">Atilla Cantay Gül</Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          I am a new graduated student of computer engineering with 3.7 / 4 gpa. Currently working on Frontend and
-          Backend Development. Have 2 deployed project which are contain react, redux, nodejs, mongodb, websocket etc.
+          I am a recent graduate of computer engineering with 3.7 / 4 GPA and first degree in the department. Currently
+          working on Frontend and Backend Development. Have 3 deployed project which are contain react, redux, nodejs,
+          mongodb, websocket and many 3rd party libraries..
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

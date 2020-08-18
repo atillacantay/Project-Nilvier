@@ -57,6 +57,7 @@ const TwitchStreamerPage = () => {
               src={`https://player.twitch.tv/?channel=${formattedName}&parent=${parent}`}
               height="100%"
               width="100%"
+              title="video_embed"
               frameBorder="0"
               scrolling="no"
               allowFullScreen={true}
@@ -68,7 +69,7 @@ const TwitchStreamerPage = () => {
                 src={`https://www.twitch.tv/embed/${formattedName}/chat?&parent=${parent}`}
                 frameBorder="0"
                 scrolling="no"
-                id="chat_embed"
+                title="chat_embed"
                 height="100%"
                 width="100%"
               />

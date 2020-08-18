@@ -22,7 +22,6 @@ import {
 } from './types'
 import { RootState } from '..'
 import Axios from 'axios'
-import { TwitchAPI } from '../../apis/twitch'
 import { API } from '../../apis/api'
 
 export type AppThunk = ActionCreator<ThunkAction<void, RootState, null, TwitchActionTypes>>

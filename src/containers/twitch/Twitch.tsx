@@ -5,16 +5,14 @@ import { RootState } from '../../store'
 import { Stream, TopGames } from '../../store/twitch/types'
 
 import TwitchGames from '../../components/twitch/TwitchGames'
-import TwitchHeader from '../../components/twitch/TwitchHeader'
+import TwitchHeader from '../../components/twitch/TwitchHeader/index'
 import TwitchCardIndicator from '../../components/indicators/TwitchCardIndicator'
 
 import { makeStyles, createStyles, Box, Theme } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import useScrollBottom from '../../hooks/useScrollBottom'
 
-// const PQUEEN = '137444898'
 // const JAHREIN = '6768122'
-// const EMBED_URL = 'https://embed.twitch.tv/embed/v1.js'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

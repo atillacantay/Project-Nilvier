@@ -19,5 +19,7 @@ export const routes = [
     path: '/twitch/:name',
     component: TwitchStreamerPage,
   },
+  { exact: true, path: '/movies', component: lazy(() => import('./containers/movie/Movies')) },
+  { exact: true, path: '/movies/:id', component: lazy(() => import('./containers/movie/Movie')) },
   { component: lazy(() => import('./components/NotFound')) },
 ]
