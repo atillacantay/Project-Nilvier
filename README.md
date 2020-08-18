@@ -96,7 +96,7 @@ npm install
 
 ## Usage
 
-The About page contains contents about my education background and experiences. If you want, you can be directed by pressing the about button in the main menu. It is also available in Giphy, a page that interacts with a public api to better understand the basics of typescript.
+The application communicates with 3rd party public APIs and heroku-based backend server prepared in the structure of restful api. There are 5 different content available in the application as About, Giphy, Fooditive, Twitch and Movies. The About page consists of sections that show who I am, my education life, experiences and competencies. The Giphy page interacts with giphy, the public api, and allows searching, and presents the obtained data to the user with the infinite scroll feature. In the Fooditive section, there will be lists of companies that produce inappropriate food shared by the Ministry of Agriculture and Forestry, and by adding filtering features, it will allow the user to reach more content with a better visual. In the twitch part, the useful endpoints of the twitch public api were used by contacting the backend api server I created and presented to the user with a nice interface. Features such as Infinite Scroll, user and streamer search, accessing the top game list, watching broadcasts, viewing chat. In the Movies section, it interacts with a public api called "omdbapi", and shows the movie lists those are searched by the user. In addition, there is a movie detail page with detailed information of the movie searched.
 
 <!-- ROADMAP -->
 
