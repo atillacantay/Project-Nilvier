@@ -19,7 +19,7 @@ export type AppThunk = ActionCreator<ThunkAction<void, RootState, null, MoviesAc
 export const fetchMovies: AppThunk = (term: string, page: number) => async dispatch => {
   dispatch({ type: FETCH_MOVIES_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`http://www.omdbapi.com/?s=${term}&page=${page}&apikey=1d359387&`)
+    const response = await Axios.get(`https://www.omdbapi.com/?s=${term}&page=${page}&apikey=1d359387&`)
     dispatch({ type: FETCH_MOVIES_SUCCESS, payload: { result: response.data, term } })
   } catch (error) {
     dispatch({ type: FETCH_MOVIES_FAILURE, payload: {} })
@@ -29,7 +29,7 @@ export const fetchMovies: AppThunk = (term: string, page: number) => async dispa
 export const fetchMovieDetails: AppThunk = (imdbId: string) => async dispatch => {
   dispatch({ type: FETCH_MOVIE_DETAILS_REQUEST, payload: {} })
   try {
-    const response = await Axios.get(`http://www.omdbapi.com/?i=${imdbId}&apikey=1d359387&`)
+    const response = await Axios.get(`https://www.omdbapi.com/?i=${imdbId}&apikey=1d359387&`)
     dispatch({ type: FETCH_MOVIE_DETAILS_SUCCESS, payload: response.data })
   } catch (error) {
     dispatch({ type: FETCH_MOVIE_DETAILS_FAILURE, payload: {} })
