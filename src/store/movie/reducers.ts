@@ -38,7 +38,6 @@ export const initialState: MovieState = {
     Type: '',
     Production: '',
     Response: '',
-    Error: undefined,
   },
   isFetching: false,
   error: undefined,

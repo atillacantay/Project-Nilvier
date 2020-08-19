@@ -69,16 +69,23 @@ const Movie: FC<MovieDetailsProps> = () => {
                 <Table>
                   <TableBody>
                     {Object.entries(movieDetails).map(
-                      (movieDetail, key) =>
-                        typeof movieDetail[1] === 'string' &&
-                        !['Response', 'Poster', 'Website'].includes(movieDetail[0]) && (
-                          <TableRow key={key}>
-                            <TableCell component="th" scope="row">
-                              {movieDetail[0]}
-                            </TableCell>
-                            <TableCell align="right">{movieDetail[1]}</TableCell>
-                          </TableRow>
-                        ),
+                      //Removes the data which is not a string typed, equal to N/A and unnecessary ones
+                      (movieDetail, key) => {
+                        const info = movieDetail[0]
+                        const value = movieDetail[1]
+                        return (
+                          typeof value === 'string' &&
+                          value !== 'N/A' &&
+                          !['Response', 'Poster', 'Website'].includes(info) && (
+                            <TableRow key={key}>
+                              <TableCell component="th" scope="row">
+                                {movieDetail[0]}
+                              </TableCell>
+                              <TableCell align="right">{movieDetail[1]}</TableCell>
+                            </TableRow>
+                          )
+                        )
+                      },
                     )}
                   </TableBody>
                 </Table>

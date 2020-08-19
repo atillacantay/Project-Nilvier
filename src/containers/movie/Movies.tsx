@@ -45,7 +45,7 @@ const Movies: FC<MovieStateProps> = () => {
   const { register, handleSubmit, errors } = useForm<IFormInput>({ defaultValues: { term: 'pokemon' } })
   const [page, setPage] = useState(1)
 
-  //Triggers action when the page is mounted
+  //Triggers action dispatcher when the page is mounted
   useEffect(() => {
     dispatch(fetchMovies('pokemon', page))
   }, [dispatch])
@@ -85,7 +85,7 @@ const Movies: FC<MovieStateProps> = () => {
             />
           </form>
         </Grid>
-        {!isFetching && !error && result.Search.length > 0 ? (
+        {!error && result.Search.length > 0 ? (
           <>
             <Grid item xs={12}>
               <Pagination

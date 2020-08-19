@@ -39,7 +39,7 @@ export interface MovieDetails {
   imdbID: string
   Type: string
   Production: string
-  Response: string  
+  Response: string
   Error?: string
 }
 

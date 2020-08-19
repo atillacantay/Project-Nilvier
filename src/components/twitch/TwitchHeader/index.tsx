@@ -6,6 +6,7 @@ import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@mate
 import { API } from '../../../apis/api'
 import SearchInput from './SearchInput'
 import SearchResults from './SearchResults'
+import useDebounce from '../../../hooks/useDebounce'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,23 +33,26 @@ const TwitchHeader = () => {
   const [loading, setLoading] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const { data } = await API.get<Channels>(`/api/twitch/search/channels`, { params: { term } })
-        setLoading(false)
-        setChannels(data.channels)
-      } catch (error) {
-        setLoading(false)
-        setChannels([])
-      }
+  const fetchData = async (debouncedSearchTerm: string) => {
+    setLoading(true)
+    try {
+      const { data } = await API.get<Channels>(`/api/twitch/search/channels`, {
+        params: { term: debouncedSearchTerm },
+      })
+      setLoading(false)
+      setChannels(data.channels)
+    } catch (error) {
+      setLoading(false)
+      setChannels([])
     }
-    const timeout = setTimeout(() => {
-      if (term) fetchData()
-    }, 1000)
-    return () => clearTimeout(timeout)
-  }, [term])
+  }
+  const debouncedSearchTerm = useDebounce(term, 1000)
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      fetchData(debouncedSearchTerm)
+    } else setChannels([])
+  }, [debouncedSearchTerm])
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value)
