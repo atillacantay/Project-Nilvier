@@ -16,6 +16,9 @@ import {
   FETCH_MORE_STREAMS_REQUEST,
   FETCH_MORE_STREAMS_SUCCESS,
   FETCH_MORE_STREAMS_FAILURE,
+  SEARCH_CHANNELS_REQUEST,
+  SEARCH_CHANNELS_SUCCESS,
+  SEARCH_CHANNELS_FAILURE,
 } from './types'
 
 var streamObj = {
@@ -43,6 +46,11 @@ export const initialState: TwitchState = {
     _total: 0,
     top: [],
   },
+  searchResult: {
+    _total: 0,
+    channels: [],
+  },
+  isSearching: false,
   isFetchingMore: false,
   isFetching: false,
   error: undefined,
@@ -141,13 +149,35 @@ export function twitchReducer(state = initialState, action: TwitchActionTypes): 
       return {
         ...state,
         isFetchingMore: false,
-        topGames: { ...state.topGames, _total: action.payload._total, top: [...state.topGames.top.concat(action.payload.top)] },
+        topGames: {
+          ...state.topGames,
+          _total: action.payload._total,
+          top: [...state.topGames.top.concat(action.payload.top)],
+        },
       }
     case FETCH_MORE_GAMES_FAILURE:
       return {
         ...state,
         isFetchingMore: false,
         error: 'Error occured',
+      }
+
+    //SEARCH CHANNELS
+    case SEARCH_CHANNELS_REQUEST:
+      return {
+        ...state,
+        isSearching: true,
+      }
+    case SEARCH_CHANNELS_SUCCESS:
+      return {
+        ...state,
+        isSearching: false,
+        searchResult: action.payload,
+      }
+    case SEARCH_CHANNELS_FAILURE:
+      return {
+        ...state,
+        isSearching: false,
       }
     default:
       return state

@@ -18,6 +18,10 @@ export const FETCH_MORE_GAMES_REQUEST = 'FETCH_MORE_GAMES_REQUEST'
 export const FETCH_MORE_GAMES_SUCCESS = 'FETCH_MORE_GAMES_SUCCESS'
 export const FETCH_MORE_GAMES_FAILURE = 'FETCH_MORE_GAMES_FAILURE'
 
+export const SEARCH_CHANNELS_REQUEST = 'SEARCH_CHANNELS_REQUEST'
+export const SEARCH_CHANNELS_SUCCESS = 'SEARCH_CHANNELS_SUCCESS'
+export const SEARCH_CHANNELS_FAILURE = 'SEARCH_CHANNELS_FAILURE'
+
 //Twitch Channel Object
 export interface Channel {
   _id: string
@@ -38,13 +42,13 @@ export interface Channel {
 }
 
 //Twitch Stream Object
-export interface Stream extends Channel {
+export interface DetailedStream extends Channel {
   description: string
   stream_type: string
 }
 
-//Twitch Streams Object
-export interface Streams {
+//Twitch Stream Object
+export interface Stream {
   _id: number
   channel: Channel
   created_at: string
@@ -55,17 +59,13 @@ export interface Streams {
   viewers: number
 }
 
-//Twitch Games Object
-export interface Games {
+//Twitch Game Object
+export interface Game {
   channels: number
   viewers: number
   game: {
     _id: number
     box: {
-      large: string
-    }
-    giantbomb_id: number
-    logo: {
       large: string
     }
     name: string
@@ -75,14 +75,22 @@ export interface Games {
 //Twitch TopGames Object
 export interface TopGames {
   _total: number
-  top: Games[]
+  top: Game[]
+}
+
+//Twitch SearchResult Object
+export interface SearchResult {
+  _total: number
+  channels: Channel[]
 }
 
 //Twitch Store State
 export interface TwitchState {
-  stream: Stream
-  streams: Streams[]
+  stream: DetailedStream
+  streams: Stream[]
   topGames: TopGames
+  searchResult: SearchResult
+  isSearching: boolean
   isFetching: boolean
   isFetchingMore: boolean
   error?: string
@@ -99,7 +107,7 @@ export interface FetchStreamRequestAction {
 //Twitch Stream Success Action
 export interface FetchStreamSuccessAction {
   type: typeof FETCH_STREAM_SUCCESS
-  payload: Stream
+  payload: DetailedStream
 }
 
 //Twitch Stream Failure Action
@@ -121,7 +129,7 @@ export interface FetchStreamsRequestAction {
 //Twitch Streams Success Action
 export interface FetchStreamsSuccessAction {
   type: typeof FETCH_STREAMS_SUCCESS
-  payload: Streams[]
+  payload: Stream[]
 }
 
 //Twitch Streams Failure Action
@@ -143,7 +151,7 @@ export interface FetchMoreStreamsRequestAction {
 //Twitch More Streams Success Action
 export interface FetchMoreStreamsSuccessAction {
   type: typeof FETCH_MORE_STREAMS_SUCCESS
-  payload: Streams[]
+  payload: Stream[]
 }
 
 //Twitch More Streams Failure Action
@@ -198,6 +206,28 @@ export interface FetchMoreGamesFailureAction {
   }
 }
 
+//Twitch Search Channels Request Action
+export interface SearchChannelsRequestAction {
+  type: typeof SEARCH_CHANNELS_REQUEST
+  payload: {
+    //no props
+  }
+}
+
+//Twitch Search Channels Success Action
+export interface SearchChannelsSuccessAction {
+  type: typeof SEARCH_CHANNELS_SUCCESS
+  payload: SearchResult
+}
+
+//Twitch Search Channels Failure Action
+export interface SearchChannelsFailureAction {
+  type: typeof SEARCH_CHANNELS_FAILURE
+  payload: {
+    //no props
+  }
+}
+
 export type TwitchActionTypes =
   | FetchStreamRequestAction
   | FetchStreamSuccessAction
@@ -214,3 +244,6 @@ export type TwitchActionTypes =
   | FetchMoreStreamsRequestAction
   | FetchMoreStreamsSuccessAction
   | FetchMoreStreamsFailureAction
+  | SearchChannelsRequestAction
+  | SearchChannelsSuccessAction
+  | SearchChannelsFailureAction
