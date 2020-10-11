@@ -36,7 +36,7 @@ const NotFound = () => {
         <Box mt={6} display="flex" justifyContent="center">
           <img
             alt="404"
-            src="https://react-material-kit.devias.io/static/images/undraw_page_not_found_su7k.svg"
+            src="https://res.cloudinary.com/dfgpewwii/image/upload/v1598347778/Project%20Nilvier/page_not_found.png"
             className={classes.image}
           />
         </Box>
