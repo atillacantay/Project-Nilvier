@@ -10,6 +10,7 @@ import { CssBaseline } from '@material-ui/core'
 import * as serviceWorker from './serviceWorker'
 
 import ThemeProvider from './components/ThemeProvider'
+import ThemeProviders from './components/ThemeProviders'
 import { rootReducer } from './store/index'
 
 declare global {
@@ -25,12 +26,12 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThu
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider>
+    <ThemeProviders>
       <SnackbarProvider maxSnack={1}>
         <CssBaseline />
         <App />
       </SnackbarProvider>
-    </ThemeProvider>
+    </ThemeProviders>
   </Provider>,
   document.getElementById('root'),
 )
