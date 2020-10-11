@@ -1,13 +1,16 @@
-import React, { Suspense, FC } from 'react'
+import React, { Suspense } from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { useNetwork } from './hooks/useNetwork'
-
 import { routes } from './Routes'
+
+import { useSnackbar } from 'notistack'
+
 import Layout from './layouts/Layout'
 import LoadingScreen from './components/LoadingScreen'
+import AuthGuard from './components/AuthGuard'
+import ErrorBoundary from './components/ErrorBoundary'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import ErrorBoundary from './components/ErrorBoundary'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -35,11 +38,12 @@ const useStyles = makeStyles(() =>
   }),
 )
 
-const App: FC = () => {
+const App = () => {
   useStyles()
   const isOnline = useNetwork()
+  const snackbar = useSnackbar()
 
-  if (!isOnline) console.log('No Internet Connection')
+  if (!isOnline) snackbar.enqueueSnackbar('No Internet Connection', { variant: 'warning' })
 
   const routeComponents = routes.map(({ exact, path, component }, key) => (
     <Route exact={exact} path={path} component={component} key={key} />
@@ -49,9 +53,11 @@ const App: FC = () => {
     <Router>
       <ErrorBoundary>
         <Suspense fallback={<LoadingScreen />}>
-          <Layout>
-            <Switch>{routeComponents}</Switch>
-          </Layout>
+          <AuthGuard>
+            <Layout>
+              <Switch>{routeComponents}</Switch>
+            </Layout>
+          </AuthGuard>
         </Suspense>
       </ErrorBoundary>
     </Router>
