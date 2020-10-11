@@ -1,6 +1,9 @@
 import React, { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { MovieDetails } from '../../store/movie/types'
+import { fetchMovieDetails } from '../../store/movie/actions'
+import { RootState } from '../../store'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import {
@@ -16,9 +19,6 @@ import {
   Card,
   CardMedia,
 } from '@material-ui/core'
-import { fetchMovieDetails } from '../../store/movie/actions'
-import { useLocation } from 'react-router-dom'
-import { RootState } from '../../store'
 import { Alert } from '@material-ui/lab'
 
 const useStyles = makeStyles((theme: Theme) =>
