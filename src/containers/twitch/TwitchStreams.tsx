@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-
 import { RootState } from '../../store'
 import { fetchStreams, fetchMoreStreams } from '../../store/twitch/actions'
-import { Streams } from '../../store/twitch/types'
+import { Stream } from '../../store/twitch/types'
+
+import { encoder } from '../../utils/encoder'
+import useScrollBottom from '../../hooks/useScrollBottom'
 import StreamCard from '../../components/twitch/StreamCard'
 
 import { Grid, createStyles, Theme, makeStyles, Button, Link, Typography, LinearProgress } from '@material-ui/core'
 import { ArrowBack } from '@material-ui/icons'
 import { Alert } from '@material-ui/lab'
-import { encoder } from '../../utils/encoder'
-import useScrollBottom from '../../hooks/useScrollBottom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,31 +27,37 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-interface StateProps {
+interface TwitchStreamsStateProps {
   isFetching: boolean
   isFetchingMore: boolean
-  streams: Streams[]
+  streams: Stream[]
   error?: string
 }
 
 const TwitchStreams = () => {
   const classes = useStyles()
-  const [isBottom, scrollRef] = useScrollBottom()
+  const { pathname } = useLocation()
   const dispatch = useDispatch()
   const [offset, setOffset] = useState(0)
-  const { pathname } = useLocation()
-  const { isFetching, streams, error } = useSelector<RootState, StateProps>(state => state.twitch, shallowEqual)
+  const [isBottom, scrollRef] = useScrollBottom()
+  const { isFetching, streams, error } = useSelector<RootState, TwitchStreamsStateProps>(
+    state => state.twitch,
+    shallowEqual,
+  )
 
   const encodedPathname = encoder(pathname)
 
+  //Triggers fetching process if pathname includes the game title
   useEffect(() => {
     if (pathname) dispatch(fetchStreams(encodedPathname))
   }, [pathname, dispatch, encodedPathname])
 
+  //Changes offset state
   useEffect(() => {
     if (isBottom) setOffset(offset => offset + 25)
   }, [isBottom, setOffset])
 
+  //Triggers action dispatcher when offset value is changed
   useEffect(() => {
     if (offset) dispatch(fetchMoreStreams(encodedPathname, offset))
   }, [offset, dispatch, encodedPathname])

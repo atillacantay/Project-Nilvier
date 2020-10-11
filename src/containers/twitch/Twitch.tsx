@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { fetchTopGames, fetchMoreGames } from '../../store/twitch/actions'
 import { RootState } from '../../store'
-import { Stream, TopGames } from '../../store/twitch/types'
+import { TopGames } from '../../store/twitch/types'
 
 import TwitchGames from '../../components/twitch/TwitchGames'
 import TwitchHeader from '../../components/twitch/TwitchHeader/index'
@@ -11,8 +11,6 @@ import TwitchCardIndicator from '../../components/indicators/TwitchCardIndicator
 import { makeStyles, createStyles, Box, Theme } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import useScrollBottom from '../../hooks/useScrollBottom'
-
-// const JAHREIN = '6768122'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
 interface StateProps {
   isFetching: boolean
   isFetchingMore: boolean
-  stream: Stream
   topGames: TopGames
   error?: string
 }
