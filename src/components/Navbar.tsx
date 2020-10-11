@@ -1,11 +1,11 @@
-import React, { FC, useContext } from 'react'
+import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { ThemeContext } from './ThemeProvider'
+
+import Auth from './auth'
+import ThemeButton from './ThemeButton'
 
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, IconButton, Button, Box } from '@material-ui/core'
-import Brightness4Icon from '@material-ui/icons/Brightness4'
-import Brightness7Icon from '@material-ui/icons/Brightness7'
+import { AppBar, Toolbar, Button, Box } from '@material-ui/core'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -16,11 +16,8 @@ const useStyles = makeStyles(() =>
   }),
 )
 
-const Navbar: FC = () => {
+const Navbar = () => {
   const classes = useStyles()
-
-  // Get the setter function from context
-  const themeContext = useContext(ThemeContext)
 
   return (
     <AppBar position="static" color="default">
@@ -29,9 +26,10 @@ const Navbar: FC = () => {
           <Button component={RouterLink} to="/" variant="text" size="large" color="inherit" className={classes.title}>
             Project Nilvier
           </Button>
-          <IconButton color="inherit" onClick={() => themeContext?._setThemeName()}>
-            {themeContext?.themeName === 'lightTheme' ? <Brightness4Icon /> : <Brightness7Icon />}
-          </IconButton>
+          <Box>
+            <Auth />
+            <ThemeButton />
+          </Box>
         </Box>
       </Toolbar>
     </AppBar>
