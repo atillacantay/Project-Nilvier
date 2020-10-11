@@ -21,5 +21,6 @@ export const routes = [
   },
   { exact: true, path: '/movies', component: lazy(() => import('./containers/movie/Movies')) },
   { exact: true, path: '/movies/:id', component: lazy(() => import('./containers/movie/Movie')) },
+  { exact: true, path: '/verify', component: lazy(() => import('./containers/VerificationPage')) },
   { component: lazy(() => import('./components/NotFound')) },
 ]
