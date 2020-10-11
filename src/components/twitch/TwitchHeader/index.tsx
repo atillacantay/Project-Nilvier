@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../store'
+import { searchChannels } from '../../../store/twitch/actions'
+import { SearchResult } from '../../../store/twitch/types'
+import useDebounce from '../../../hooks/useDebounce'
 
-import { Channel } from '../../../store/twitch/types'
-
-import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@material-ui/core'
-import { API } from '../../../apis/api'
 import SearchInput from './SearchInput'
 import SearchResults from './SearchResults'
-import useDebounce from '../../../hooks/useDebounce'
+
+import { makeStyles, createStyles, Box, Typography, Divider, Theme } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,38 +22,23 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-interface Channels {
-  channels: Channel[]
-  _total: number
+interface StateProps {
+  isSearching: boolean
+  searchResult: SearchResult
 }
 
 const TwitchHeader = () => {
   const classes = useStyles()
   const textfieldRef = useRef(null)
-  const [channels, setChannels] = useState<Channel[]>([])
+  const dispatch = useDispatch()
+  const { isSearching, searchResult } = useSelector<RootState, StateProps>(state => state.twitch)
   const [term, setTerm] = useState('')
-  const [loading, setLoading] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const fetchData = async (debouncedSearchTerm: string) => {
-    setLoading(true)
-    try {
-      const { data } = await API.get<Channels>(`/api/twitch/search/channels`, {
-        params: { term: debouncedSearchTerm },
-      })
-      setLoading(false)
-      setChannels(data.channels)
-    } catch (error) {
-      setLoading(false)
-      setChannels([])
-    }
-  }
   const debouncedSearchTerm = useDebounce(term, 1000)
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      fetchData(debouncedSearchTerm)
-    } else setChannels([])
+    if (debouncedSearchTerm) dispatch(searchChannels(debouncedSearchTerm))
   }, [debouncedSearchTerm])
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,11 +46,12 @@ const TwitchHeader = () => {
   }
 
   useEffect(() => {
-    if (channels.length > 0) setAnchorEl(textfieldRef.current)
-  }, [channels])
+    if (searchResult.channels.length > 0) setAnchorEl(textfieldRef.current)
+  }, [searchResult])
 
   const handleClose = () => {
     setAnchorEl(null)
+    setTerm('')
   }
 
   return (
@@ -72,8 +60,8 @@ const TwitchHeader = () => {
         <Typography variant="h4" className={classes.title}>
           Twitch Top Games
         </Typography>
-        <SearchInput onInputChange={onInputChange} textfieldRef={textfieldRef} loading={loading} />
-        <SearchResults anchorEl={anchorEl} handleClose={handleClose} channels={channels} />
+        <SearchInput onInputChange={onInputChange} textfieldRef={textfieldRef} isSearching={isSearching} value={term} />
+        <SearchResults anchorEl={anchorEl} handleClose={handleClose} channels={searchResult.channels} />
       </Box>
       <Divider />
     </div>

@@ -2,68 +2,44 @@ import React, { useState, FC, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 
-import { Streams } from '../../store/twitch/types'
+import { Stream } from '../../store/twitch/types'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Avatar,
-  Theme,
-  Grid,
-  Box,
-  Badge,
-  Tooltip,
-  Fade,
-} from '@material-ui/core'
+import { Card, CardMedia, CardContent, Typography, Avatar, Theme, Grid, Box, Badge, Tooltip } from '@material-ui/core'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser'
+import useDebounce from '../../hooks/useDebounce'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
+    streamCardRoot: {},
     text: {
       marginLeft: theme.spacing(1),
     },
     verifiedIcon: {
-      marginLeft: theme.spacing(1),
       color: '#9146FF',
     },
   }),
 )
 
 type StateProps = {
-  stream: Streams
+  stream: Stream
 }
 
 const StreamCard: FC<StateProps> = ({ stream }) => {
   const classes = useStyles()
   const parent = process.env.NODE_ENV === 'development' ? 'localhost' : process.env.REACT_APP_TWITCH_PARENT_URL
   const [raised, setRaised] = useState(false)
-  const [isPlaying, setPlaying] = useState(false)
+  const isPlaying = useDebounce(raised, 1000)
 
   const handleRaise = () => {
     if (!raised) setRaised(true)
     else setRaised(false)
   }
 
-  //Adding delay to on hover event for 1 second
-  useEffect(() => {
-    let timer: NodeJS.Timeout
-    if (raised)
-      timer = setTimeout(() => {
-        setPlaying(true)
-      }, 1000)
-    else setPlaying(false)
-
-    return () => clearTimeout(timer)
-  }, [raised])
-
   return (
     <Link to={`/twitch/${stream.channel.name}`} style={{ textDecoration: 'none' }}>
-      <Card className={classes.root} raised={raised} onMouseEnter={handleRaise} onMouseLeave={handleRaise}>
+      <Card className={classes.streamCardRoot} raised={raised} onMouseEnter={handleRaise} onMouseLeave={handleRaise}>
         <Box p={2}>
           <Grid container>
             <Grid item xs={3}>
@@ -74,11 +50,7 @@ const StreamCard: FC<StateProps> = ({ stream }) => {
                   horizontal: 'right',
                 }}
                 invisible={!stream.channel.partner}
-                badgeContent={
-                  <Tooltip title="Verified" placement="right-start">
-                    <VerifiedUserIcon className={classes.verifiedIcon} fontSize="small" />
-                  </Tooltip>
-                }
+                badgeContent={<VerifiedUserIcon className={classes.verifiedIcon} fontSize="small" />}
               >
                 <Avatar src={stream.channel.logo} alt={stream.channel.name} />
               </Badge>
@@ -99,25 +71,26 @@ const StreamCard: FC<StateProps> = ({ stream }) => {
             </Grid>
           </Grid>
         </Box>
-        <Fade in={true} timeout={1000}>
-          <CardMedia
-            component={isPlaying ? 'iframe' : 'img'}
-            alt={stream.channel.status}
-            height={226}
-            frameBorder="0"
-            allowFullScreen={false}
-            image={
-              isPlaying
-                ? `https://player.twitch.tv/?channel=${stream.channel.name}&parent=${parent}&muted=true`
-                : stream.preview.large
-            }
-            title={stream.channel.status}
-          />
-        </Fade>
+        <CardMedia
+          component={isPlaying ? 'iframe' : 'img'}
+          alt={stream.channel.status}
+          height={250}
+          frameBorder="0"
+          allowFullScreen={false}
+          image={
+            isPlaying
+              ? `https://player.twitch.tv/?channel=${stream.channel.name}&parent=${parent}&muted=true`
+              : stream.preview.large
+          }
+        />
         <CardContent>
-          <Typography variant="caption">
-            {stream.channel.status.length > 35 ? `${stream.channel.status.slice(0, 35)}...` : stream.channel.status}
-          </Typography>
+          {stream.channel.status.length > 35 ? (
+            <Typography variant="caption" component="span" title={stream.channel.status}>
+              {stream.channel.status.slice(0, 35)}...
+            </Typography>
+          ) : (
+            <Typography variant="caption">{stream.channel.status}</Typography>
+          )}
         </CardContent>
       </Card>
     </Link>

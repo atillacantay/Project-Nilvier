@@ -17,19 +17,20 @@ const useStyles = makeStyles(() =>
 )
 
 interface SearchInputProps {
+  value: string
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   textfieldRef: React.MutableRefObject<null>
-  loading: boolean
+  isSearching: boolean
 }
 
-const SearchInput: FC<SearchInputProps> = ({ onInputChange, textfieldRef, loading }) => {
+const SearchInput: FC<SearchInputProps> = ({ value, onInputChange, textfieldRef, isSearching }) => {
   const classes = useStyles()
 
   return (
     <TextField
-      name="term"
       ref={textfieldRef}
       autoComplete="off"
+      value={value}
       variant="outlined"
       className={classes.searchInput}
       placeholder="Search users"
@@ -40,7 +41,9 @@ const SearchInput: FC<SearchInputProps> = ({ onInputChange, textfieldRef, loadin
           </InputAdornment>
         ),
         endAdornment: (
-          <InputAdornment position="end">{loading && <CircularProgress size={24} color="inherit" />}</InputAdornment>
+          <InputAdornment position="end">
+            {isSearching && <CircularProgress size={24} color="inherit" />}
+          </InputAdornment>
         ),
       }}
       onChange={onInputChange}

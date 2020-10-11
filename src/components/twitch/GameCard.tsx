@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Games } from '../../store/twitch/types'
+import { Game } from '../../store/twitch/types'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Card, CardMedia, CardActionArea, Box, Typography, Theme } from '@material-ui/core'
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface GameCardProps {
-  topGame: Games
+  topGame: Game
 }
 
 const GameCard: FC<GameCardProps> = ({ topGame }) => {
